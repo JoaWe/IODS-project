@@ -1,4 +1,4 @@
 
 # About the project
-
-*Write a short description about the course and add a link to your github repository here. This is an R markdown (.Rmd) file so you can use R markdown syntax. See the 'Useful links' page in the mooc area (chapter 1) for instructions.*
+## My Hopes for the course:
+*I have never used R before and thus am very insure about it. I hope that aside from learning the "How to...", I will also learn about the values of open access to data and research in general, as well as, the downsides. In other words: I am hoping for a lively discussion *
