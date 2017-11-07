@@ -1,4 +1,6 @@
 # My Hopes for the course:
 I have never used R or GitHub before and thus am very unsure about it. I hope that aside from learning the "How to...", I will also learn about the values of open access to data and research in general, as well as, the downsides. In other words: I am hoping for a lively discussion.  
 
+I apologize, if my continuous corrections and adjustments make the evaluation of my work more difficult than necessary.But I feel that I need to see the outcome.
+
 [Way to go to my repository](https://github.com/JoaWe/IODS-project)
