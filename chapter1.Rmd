@@ -1,3 +1,5 @@
+
+
 ##**Experiences and learning progress during the first week:** 
 
 This week's coursework was marked, for me, by developing a kind of feeling for *RStudio* and *R*.
@@ -9,7 +11,7 @@ This week's coursework was marked, for me, by developing a kind of feeling for *
 3. I have started to compile a handwritten list for myself, containing some of the *commands* given in the datacamp exercise, as well, as further commands that I stumbled upon via **this** exercise. This step may be considered *oldfashioned* by you, but to me it seems necesserary, as I have never learned *vocabularies*, if I did not at some point write them by hand. The usefulness of such a list remains to be seen, but in the least I will be able to look back on it.
 
 4. In my third point, I mentioned *stumbled upon*. And a lot of my learning this week within the programs RStudio and GitHub truely derives from *trying to see what happens*, as my repository surely attests to. I apologize, if that causes inconveniences, when reading through them. I will try to do better in the future.
-This does not mean that the instructions given during the course-sessions, and the other help-options were not useful to me, after all, it seems that what needed to ended up on.
+This does not mean that the instructions given during the course-sessions, and the other help-options were not useful to me, after all, it seems that what needed to ended up on the page.
 
 5. Finally, I noticed that with regard to the programming language, I really need to pay a lot more attention to details. In the datacamp-exercise, as well as, in this exercise I tend to overlook details such as the quotationmarks...
 
