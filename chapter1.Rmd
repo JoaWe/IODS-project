@@ -1,6 +1,24 @@
+##**Experiences and learning progress during the first week:** 
+
+This week's coursework was marked, for me, by developing a kind of feeling for *RStudio* and *R*.
+
+1. I began, naturally, by downloading and setting up the respective programs, as well as looking around within them to see what can potentially be done with/by them. I am still quite overwhelmed by the possibilities -- and from my point of view also impossibilities -- with regard to the programs.
+
+2. Next I worked on the first datacamp-exercise. It gave a short and brief introduction to R, which I definitely consider to be helpful. Yet, I also found it to a certain degree confusing, though I cannot quite explain why. As I am a *newby* myself, and never considered myself as being more interested in computers than necessary, I expect that some of my problems might derive from these aspects.
+
+3. I have started to compile a handwritten list for myself, containing some of the *commands* given in the datacamp exercise, as well, as further commands that I stumbled upon via **this** exercise. This step may be considered *oldfashioned* by you, but to me it seems necesserary, as I have never learned *vocabularies*, if I did not at some point write them by hand. The usefulness of such a list remains to be seen, but in the least I will be able to look back on it.
+
+4. In my third point, I mentioned *stumbled upon*. And a lot of my learning this week within the programs RStudio and GitHub truely derives from *trying to see what happens*, as my repository surely attests to. I apologize, if that causes inconveniences, when reading through them. I will try to do better in the future.
+This does not mean that the instructions given during the course-sessions, and the other help-options were not useful to me, after all, it seems that what needed to ended up on.
+
+5. Finally, I noticed that with regard to the programming language, I really need to pay a lot more attention to details. In the datacamp-exercise, as well as, in this exercise I tend to overlook details such as the quotationmarks...
+
+All in all, I still am very insecure with the programming language and I still have a long way to go, I think.
 
 
-# **My Hopes for the course:**
+## My Hopes for the course:
 I have never used R or GitHub before and thus am very unsure about it. I hope that aside from learning the "How to...", I will also learn about the values of open access to data and research in general, as well as, the downsides. In other words: I am hoping for a lively discussion.  
+
+Furthermore, I hope that with the aid of this course I can get over at least some of my *fear* with regard to programming language and programs in general.
 
 [Way to go to my repository](https://github.com/JoaWe/IODS-project)
