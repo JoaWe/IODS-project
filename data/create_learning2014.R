@@ -39,10 +39,6 @@ colnames(lrn14)[59] <- "points"
 colnames(lrn14)
 colnames(lrn14)[57] <- "age"
 
-#Trying to filter those with exampoints equal to zero
-lrn14 <- filter(lrn14, points > "0")
-summarise(lrn14)
-lrn14
 
 
 #Scaling down "Attitude" to attitude
@@ -98,3 +94,5 @@ lrn14$stra
 keep_columns <- c("gender","age","Attitude", "deep", "stra", "surf", "points")
 learning2014 <- select (lrn14, one_of (keep_columns))
 str(learning2014)
+
+
