@@ -38,3 +38,43 @@ lrn14$attitude
 summary(lrn14$attitude)
 #At least that looks like it works...
 
+install.packages("tidyverse")
+install.packages("dplyr")
+library(dplyr)
+#Let's try the combination of variables to "deep_questions" again:
+deep_questions <- c("D03", "D11", "D19", "D27", "D07", "D14", "D22", "D30","D06",  "D15", "D23", "D31")
+summarise(deep_questions)
+deep_questions
+#creating the basic column:
+deep_columns <- select(lrn14, one_of(deep_questions))
+deep_columns
+
+#applying means to "deep_columns":
+lrn14$deep <- rowMeans(deep_columns)
+
+# combining variables to "surface question"
+surface_questions <- c("SU02","SU10","SU18","SU26", "SU05","SU13","SU21","SU29","SU08","SU16","SU24","SU32")
+surface_questions
+summarise(surface_questions)
+
+#creating "surface_columns"
+surface_columns <- select(lrn14, one_of(surface_questions))
+surface_columns
+
+#applying means to "surface_columns"
+lrn14$surf <- rowMeans(surface_columns)
+lrn14$surf
+summarise(lrn14$surf)
+
+#creating variable "surface_questions"
+strategic_questions <- c("ST01","ST09","ST17","ST25","ST04","ST12","ST20","ST28")
+strategic_questions
+summarise(strategic_questions)
+
+#creating "strategic_columns"
+strategic_columns <- select(lrn14, one_of (strategic_questions))
+strategic_columns
+
+#applying means to "strategic_columns"
+lrn14$stra <- rowMeans(strategic_columns)
+lrn14$stra
