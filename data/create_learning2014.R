@@ -8,3 +8,8 @@ lrn14 <- read.table("http://www.helsinki.fi/~kvehkala/JYTmooc/JYTOPKYS3-data.txt
 # Except for the variables of "Age", "Attitude", "Points", and "gender" the data are operationalzed on a scale from 1 - 5.
 # The variable "gender" does not include numeric values as they are they are of a qualitative nature, but they are operationalized in the form of text in a binary fashion of "M" or "F". 
 # The variable "Age" - according to the info-page - is based on counting the number of years since the birthdate provided by the respondent.
+
+#the data dimension:
+dim(lrn14)
+#the data-set's structure:
+str(lrn14)
