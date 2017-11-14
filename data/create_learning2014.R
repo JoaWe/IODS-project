@@ -32,6 +32,19 @@ lrn14$Points
 summary(lrn14$Points)
 # The points reach from 0 to a maximum of 33. The average exam-points are 20,61. The Median-value of the Variable points is 22.00.
 
+colnames(lrn14)
+
+# changing column-names as undertaken in the Datacamp-exercise
+colnames(lrn14)[59] <- "points"
+colnames(lrn14)
+colnames(lrn14)[57] <- "age"
+
+#Trying to filter those with exampoints equal to zero
+lrn14 <- filter(lrn14, points > "0")
+summarise(lrn14)
+lrn14
+
+
 #Scaling down "Attitude" to attitude
 lrn14$attitude <- lrn14$Attitude / 10
 lrn14$attitude
