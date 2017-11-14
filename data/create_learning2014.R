@@ -1,6 +1,6 @@
 # Joana 
 # 14.11.2017
-# This is file is intended to work on my first attempts with the data-wrangling exercise.
+# This file is intended to work on my first attempts with the data-wrangling exercise.
 
 lrn14 <- read.table("http://www.helsinki.fi/~kvehkala/JYTmooc/JYTOPKYS3-data.txt", sep="\t", header=TRUE)
 
