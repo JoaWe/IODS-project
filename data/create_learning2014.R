@@ -21,3 +21,8 @@ str(lrn14)
 lrn14$gender
 summary(lrn14$gender)
 # The printing of these data confirmed the binary character of the data. The summary supplied the information that the 183 observations are thus divided in 122 female and 61 male respondents.
+
+# printing and summarizing "Age"
+lrn14$Age
+summary(lrn14$Age)
+# The summary provided me with the age-range of the respondents from 17 to 55 years. The average-age of the respondents is 25,58 years. The median-age is 22.
