@@ -13,3 +13,11 @@ lrn14 <- read.table("http://www.helsinki.fi/~kvehkala/JYTmooc/JYTOPKYS3-data.txt
 dim(lrn14)
 #the data-set's structure:
 str(lrn14)
+
+
+# Data-wrangling attempts:
+
+# printing and summarizing "gender"
+lrn14$gender
+summary(lrn14$gender)
+# The printing of these data confirmed the binary character of the data. The summary supplied the information that the 183 observations are thus divided in 122 female and 61 male respondents.
