@@ -46,3 +46,8 @@ strategic_questions <- c("ST01","ST09","ST17","ST25","ST04","ST12","ST20","ST28"
 #printing and summarizing "strategic_questions"
 strategic_questions
 summary(strategic_questions)
+
+#printing and summarizing "Points"
+lrn14$Points
+summary(lrn14$Points)
+# The points reach from 0 to a maximum of 33. The average exam-points are 20,61. The Median-value of the Variable points is 22.00.
