@@ -10,10 +10,17 @@ After reading the data into R, I took a glimpse at the provided data. Here are m
 3. The variable "gender", as a qualitative characteristic, are given as binary text-data in "M" (=male) and "F" (=female).
 4. The variable "Age", is provided as number of years, and derived from the provided year of birth by the respondent. 
 
-## Data-Wrangling Attempts ##
+## 2. Data-Wrangling Attempts ##
 
-1. I printed and summarized the variable "gender":
+**1. I printed and summarized the variable "gender":**
+
   - the result showed that 122 respondents were female, and 61 were male.
+  
+**2. I printed and summarized the variable "Age".**
+
+  - The age-range is between 17 and 55 years.
+  - The average age is 25,58 years.
+  - The median-age is 22 years.
 
 - Describe your work and results clearly.
 - Assume the reader has an introductory course level understanding of writing and reading R code as well as statistical methods
