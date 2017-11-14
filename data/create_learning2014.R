@@ -53,7 +53,9 @@ summary(lrn14$attitude)
 
 install.packages("tidyverse")
 install.packages("dplyr")
+install.packages("ggplot2")
 library(dplyr)
+
 #Let's try the combination of variables to "deep_questions" again:
 deep_questions <- c("D03", "D11", "D19", "D27", "D07", "D14", "D22", "D30","D06",  "D15", "D23", "D31")
 summarise(deep_questions)
@@ -91,3 +93,8 @@ strategic_columns
 #applying means to "strategic_columns"
 lrn14$stra <- rowMeans(strategic_columns)
 lrn14$stra
+
+# keeping columns for new dataset
+keep_columns <- c("gender","age","Attitude", "deep", "stra", "surf", "points")
+learning2014 <- select (lrn14, one_of (keep_columns))
+str(learning2014)
