@@ -58,9 +58,18 @@ It appears, that I have managed to create the file, but I am not sure if I manag
 
 ```{r }
 
-read.table("C:\\Users\\Ani\\Documents\\GitHub\\IODS-project\\data\\learning2014.csv")
+learning2014 <- read.csv("C:\\Users\\Ani\\Documents\\GitHub\\IODS-project\\data\\learning2014.csv", header=TRUE)
 
 ```
+
+```{r dim}
+
+dim(learning2014)
+
+```
+
+*I am not sure why the dim-function tells me here that I have 8 variables and not seven as in the r-file...*
+
 
 - Describe your work and results clearly.
 - Assume the reader has an introductory course level understanding of writing and reading R code as well as statistical methods
