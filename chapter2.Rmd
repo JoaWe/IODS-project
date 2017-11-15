@@ -111,4 +111,41 @@ p2
 
 ```
 
+2. Relating Age with deep distinguished by gender
 
+```{r second plot}
+
+library(ggplot2)
+
+p1 <- ggplot(learning2014, aes(x = Age, y = deep))
+p1 <- ggplot(learning2014, aes (x = Age, y = deep, col = gender))
+p2 <- p1 + geom_point()
+p2
+
+```
+
+3. Relating Age with surf distinguished by gender
+
+```{r third plot}
+
+library(ggplot2)
+
+p1 <- ggplot(learning2014, aes(x = Age, y = surf))
+p1 <- ggplot(learning2014, aes (x = Age, y = surf, col = gender))
+p2 <- p1 + geom_point()
+p2
+
+```
+
+4. Relating Age with stra distinguished by gender
+
+```{r fourth plot}
+
+library(ggplot2)
+
+p1 <- ggplot(learning2014, aes(x = Age, y = stra))
+p1 <- ggplot(learning2014, aes (x = Age, y = stra, col = gender))
+p2 <- p1 + geom_point()
+p2
+
+```
