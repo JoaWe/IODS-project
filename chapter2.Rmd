@@ -1,5 +1,3 @@
-
-
 # **Week 2: Let's start with the data**
 
 *Describe the work you have done this week and summarize your learning.*
@@ -52,9 +50,9 @@ After reading the data into R, I took a glimpse at the provided data. Here are m
 Up to this point, it appears to me as though it worked according to the instructions...
 
 
-##Trying to establish the .csv-file##
+##Trying to work with the newly established data-set "learning2014"##
 
-It appears, that I have managed to create the file, but I am not sure if I manage any further... Here, I guess, you will be able to see why I am not happy with it...
+It appears, that I have managed to create the csv.file, but I am not sure if I manage any further... Here, I guess, you will be able to see why I am not happy with it...
 
 ```{r }
 
@@ -73,6 +71,7 @@ dim(learning2014)
 *I am not sure why the dim-function tells me here that I have 8 variables and not seven as in the r-file...*
 
 Trying to explore the structure of my data:
+
 ```{r str}
 
 str(learning2014)
@@ -80,6 +79,21 @@ str(learning2014)
 ```
 With the exception of this extra-variable which I cannot explain - I'm sorry - it appears that otherwise the 7 variables "gender", "Age", "Attitude", "deep", "surf", stra", and "Points" are there. I furthermore appear to be having the 166 observations. Let's see how it may, or may not work out with the rest of the tasks...
 
-- Describe your work and results clearly.
-- Assume the reader has an introductory course level understanding of writing and reading R code as well as statistical methods
-- Assume the reader has no previous knowledge of your data or the more advanced methods you are using  
+**"Gender"** represents the respondents sex, in terms of "F" (female) and "M" (male).
+
+**"Age"** represents the age in number of years and is calculated from the year of birth provided by the respective respondent.
+
+**"Attitude"** reflects the respondent's general attitude towards statistics. 
+
+**"deep", "surf", and "stra"**  are combination variables, the respondents answers are represented within a scale from 1 to 5:
+
+  - **"deep"** is set up as the means of a series of 12 questions relating to the respondent's learning methods and their impacts.
+  - **"surf"** is equally set up as the means of 12 questions, which in this case relate to the respondent's learning habits.
+  - **"stra"** is a combination-variable set up out of the mean ofthe answers given to 8 questions relating to the respondent's organization habits with regard to their studies.
+
+**"Points"** is a variable relating to the respondent's exam-points. The original scale of this variable ranged from 0 to 33. Respondents with 0 exam-points have been excluded from the data-set.
+
+##Graphical overview of the data##
+
+1. Relating Attitude with Points distinguished by gender (as it was done in the datacamp-exercise):
+
