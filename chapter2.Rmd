@@ -62,6 +62,8 @@ learning2014 <- read.csv("C:\\Users\\Ani\\Documents\\GitHub\\IODS-project\\data\
 
 ```
 
+Looking at the structure of my dataset:
+
 ```{r dim}
 
 dim(learning2014)
@@ -70,6 +72,13 @@ dim(learning2014)
 
 *I am not sure why the dim-function tells me here that I have 8 variables and not seven as in the r-file...*
 
+Trying to explore the structure of my data:
+```{r str}
+
+str(learning2014)
+
+```
+With the exception of this extra-variable which I cannot explain - I'm sorry - it appears that otherwise the 7 variables "gender", "Age", "Attitude", "deep", "surf", stra", and "Points" are there. I furthermore appear to be having the 166 observations. Let's see how it may, or may not work out with the rest of the tasks...
 
 - Describe your work and results clearly.
 - Assume the reader has an introductory course level understanding of writing and reading R code as well as statistical methods
