@@ -142,7 +142,10 @@ $(document).ready(function () {
 <ul>
 <li><a href="#experiences-and-learning-progress-during-the-first-week"><strong>Experiences and learning progress during the first week:</strong></a></li>
 <li><a href="#my-hopes-for-the-course">My Hopes for the course:</a></li>
-<li><a href="#week-2-start-up"><strong>Week 2: Start Up!</strong></a></li>
+<li><a href="#week-2-lets-start-with-the-data"><strong>Week 2: Let’s start with the data</strong></a><ul>
+<li><a href="#data-at-a-glance">1. Data at a glance</a></li>
+<li><a href="#data-wrangling-attempts">2. Data-Wrangling Attempts</a></li>
+</ul></li>
 </ul>
 </div>
 
@@ -154,7 +157,7 @@ $(document).ready(function () {
 <li><p>I began, naturally, by downloading and setting up the respective programs, as well as looking around within them to see what can potentially be done with/by them. I am still quite overwhelmed by the possibilities – and from my point of view also impossibilities – with regard to the programs.</p></li>
 <li><p>Next I worked on the first datacamp-exercise. It gave a short and brief introduction to R, which I definitely consider to be helpful. Yet, I also found it to a certain degree confusing, though I cannot quite explain why. As I am a <em>newby</em> myself, and never considered myself as being more interested in computers than necessary, I expect that some of my problems might derive from these aspects.</p></li>
 <li><p>I have started to compile a handwritten list for myself, containing some of the <em>commands</em> given in the datacamp exercise, as well, as further commands that I stumbled upon via <strong>this</strong> exercise. This step may be considered <em>oldfashioned</em> by you, but to me it seems necesserary, as I have never learned <em>vocabularies</em>, if I did not at some point write them by hand. The usefulness of such a list remains to be seen, but in the least I will be able to look back on it.</p></li>
-<li><p>In my third point, I mentioned <em>stumbled upon</em>. And a lot of my learning this week within the programs RStudio and GitHub truely derives from <em>trying to see what happens</em>, as my repository surely attests to. I apologize, if that causes inconveniences, when reading through them. I will try to do better in the future. This does not mean that the instructions given during the course-sessions, and the other help-options were not useful to me, after all, it seems that what needed to ended up on.</p></li>
+<li><p>In my third point, I mentioned <em>stumbled upon</em>. And a lot of my learning this week within the programs RStudio and GitHub truely derives from <em>trying to see what happens</em>, as my repository surely attests to. I apologize, if that causes inconveniences, when reading through them. I will try to do better in the future. This does not mean that the instructions given during the course-sessions, and the other help-options were not useful to me, after all, it seems that what needed to ended up on the page.</p></li>
 <li><p>Finally, I noticed that with regard to the programming language, I really need to pay a lot more attention to details. In the datacamp-exercise, as well as, in this exercise I tend to overlook details such as the quotationmarks…</p></li>
 </ol>
 <p>All in all, I still am very insecure with the programming language and I still have a long way to go, I think.</p>
@@ -166,15 +169,64 @@ $(document).ready(function () {
 <p><a href="https://github.com/JoaWe/IODS-project">Way to go to my repository</a></p>
 <hr />
 </div>
-<div id="week-2-start-up" class="section level1">
-<h1><strong>Week 2: Start Up!</strong></h1>
+<div id="week-2-lets-start-with-the-data" class="section level1">
+<h1><strong>Week 2: Let’s start with the data</strong></h1>
 <p><em>Describe the work you have done this week and summarize your learning.</em></p>
+<div id="data-at-a-glance" class="section level2">
+<h2>1. Data at a glance</h2>
+<p>After reading the data into R, I took a glimpse at the provided data. Here are my first observations:</p>
+<ol style="list-style-type: decimal">
+<li>The data-set consists of 183 observations relating to 60 variables.</li>
+<li>Except for the variables “Age”, “Attitude”, “Points”, and “gender” the data appear to be provided by a scale from 1 to 5. (In the print out, however, 167 rows were omitted, thus a higher scale may be possible)</li>
+<li>The variable “gender”, as a qualitative characteristic, are given as binary text-data in “M” (=male) and “F” (=female).</li>
+<li>The variable “Age”, is provided as number of years, and derived from the provided year of birth by the respondent.</li>
+</ol>
+</div>
+<div id="data-wrangling-attempts" class="section level2">
+<h2>2. Data-Wrangling Attempts</h2>
+<p><strong>1. I printed and summarized the variable “gender”:</strong></p>
+<ul>
+<li>the result showed that 122 respondents were female, and 61 were male.</li>
+</ul>
+<p><strong>2. I printed and summarized the variable “Age”.</strong></p>
+<ul>
+<li>The age-range is between 17 and 55 years.</li>
+<li>The average age is 25,58 years.</li>
+<li>The median-age is 22 years.</li>
+</ul>
+<p><strong>3. I printed and summarized the variable “Points”</strong></p>
+<ul>
+<li>At this point the variable ranges between 0 and 33.</li>
+<li>The average points are 20,61.</li>
+<li>The median-value is 22,00 points.</li>
+</ul>
+<p><strong>4. I scaled down the variable “Attitude” by 10, afterwards I printed and summarized it</strong></p>
+<ul>
+<li>The variable - according to the additional information homepage - intends to reflect the respondent’s “global attitude towards statistics”</li>
+<li>The range of the variable-values is now between 1,4 and 5,00.</li>
+<li>The average-value is 3,121.</li>
+<li>The Median-value is 3,2.</li>
+</ul>
+<p><strong>5. I attempted to establish the combination variables “deep_questions”, “surface_questions”, and “strategic_questions”</strong></p>
+<ul>
+<li>I combined the variables for each as it was done in the datacamp-exercises (“deep_questions” and “surface_questions” thus resulted out of a combination of 12 variables each, while “strategic_questions” became a combination of 8 variables).</li>
+<li>Next I created the columns out of the individual new variables and named them “deep_columns”, “surface_columns”, and “startegic_columns”.</li>
+<li>I attemped to apply the rowMeans function on each. While in the print outs it showed me the columns results, I could not get the summarise function to work. I am not sure if that is supposed to be that way.</li>
+</ul>
+<p><strong>6. I created the new data-set “learning2014”</strong></p>
+<ul>
+<li>At this point it consisted of 183 observations and 7 variables.</li>
+<li>The variable names are “gender”, “Age”, “Attitude”, “deep”, “stra”, “surf”, and “Points”.</li>
+<li>After I tried to exclude respondents with 0 points within the “Points”-variable my dataset consisted of only 166 observations for the 7 given variables.</li>
+</ul>
+<p>Up to this point, it appears to me as though it worked according to the instructions…</p>
 <ul>
 <li>Describe your work and results clearly.</li>
 <li>Assume the reader has an introductory course level understanding of writing and reading R code as well as statistical methods</li>
 <li>Assume the reader has no previous knowledge of your data or the more advanced methods you are using</li>
 </ul>
 <hr />
+</div>
 </div>
 
 
