@@ -190,17 +190,25 @@ $(document).ready(function () {
 ##  $ stra    : num  3.38 2.75 3.62 3.12 3.62 ...
 ##  $ surf    : num  2.58 3.17 2.25 2.25 2.83 ...
 ##  $ points  : num  2.5 1.2 2.4 1 2.2 2.1 2.1 3.1 2.4 2.6 ...</code></pre>
+<pre class="r"><code>head(learning2014)</code></pre>
+<pre><code>##   X gender Age attitude     deep  stra     surf points
+## 1 1      F  53      3.7 3.583333 3.375 2.583333    2.5
+## 2 2      M  55      3.1 2.916667 2.750 3.166667    1.2
+## 3 3      F  49      2.5 3.500000 3.625 2.250000    2.4
+## 4 4      M  53      3.5 3.500000 3.125 2.250000    1.0
+## 5 5      M  49      3.7 3.666667 3.625 2.833333    2.2
+## 6 6      F  38      3.8 4.750000 3.625 2.416667    2.1</code></pre>
 <p>With the exception of this extra-variable which I cannot explain - I’m sorry - it appears that otherwise the 7 variables “gender”, “Age”, “Attitude”, “deep”, “surf”, stra“, and”Points&quot; are there. I furthermore appear to be having the 166 observations. Let’s see how it may, or may not work out with the rest of the tasks…</p>
 <p><strong>“Gender”</strong> represents the respondents sex, in terms of “F” (female) and “M” (male).</p>
 <p><strong>“Age”</strong> represents the age in number of years and is calculated from the year of birth provided by the respective respondent.</p>
-<p><strong>“Attitude”</strong> reflects the respondent’s general attitude towards statistics.</p>
+<p><strong>“attitude”</strong> reflects the respondent’s general attitude towards statistics.</p>
 <p><strong>“deep”, “surf”, and “stra”</strong> are combination variables, the respondents answers are represented within a scale from 1 to 5:</p>
 <ul>
 <li><strong>“deep”</strong> is set up as the means of a series of 12 questions relating to the respondent’s learning methods and their impacts.</li>
 <li><strong>“surf”</strong> is equally set up as the means of 12 questions, which in this case relate to the respondent’s learning habits.</li>
 <li><strong>“stra”</strong> is a combination-variable set up out of the mean ofthe answers given to 8 questions relating to the respondent’s organization habits with regard to their studies.</li>
 </ul>
-<p><strong>“Points”</strong> is a variable relating to the respondent’s exam-points. The original scale of this variable ranged from 0 to 33. Respondents with 0 exam-points have been excluded from the data-set.</p>
+<p><strong>“points”</strong> is a variable relating to the respondent’s exam-points. The original scale of this variable ranged from 0 to 33. Respondents with 0 exam-points have been excluded from the data-set.</p>
 </div>
 <div id="graphical-overview-of-the-data" class="section level2">
 <h2>Graphical overview of the data</h2>

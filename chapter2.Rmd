@@ -77,13 +77,18 @@ Trying to explore the structure of my data:
 str(learning2014)
 
 ```
+```{r head}
+
+head(learning2014)
+
+```
 With the exception of this extra-variable which I cannot explain - I'm sorry - it appears that otherwise the 7 variables "gender", "Age", "Attitude", "deep", "surf", stra", and "Points" are there. I furthermore appear to be having the 166 observations. Let's see how it may, or may not work out with the rest of the tasks...
 
 **"Gender"** represents the respondents sex, in terms of "F" (female) and "M" (male).
 
 **"Age"** represents the age in number of years and is calculated from the year of birth provided by the respective respondent.
 
-**"Attitude"** reflects the respondent's general attitude towards statistics. 
+**"attitude"** reflects the respondent's general attitude towards statistics. 
 
 **"deep", "surf", and "stra"**  are combination variables, the respondents answers are represented within a scale from 1 to 5:
 
@@ -91,7 +96,7 @@ With the exception of this extra-variable which I cannot explain - I'm sorry - i
   - **"surf"** is equally set up as the means of 12 questions, which in this case relate to the respondent's learning habits.
   - **"stra"** is a combination-variable set up out of the mean ofthe answers given to 8 questions relating to the respondent's organization habits with regard to their studies.
 
-**"Points"** is a variable relating to the respondent's exam-points. The original scale of this variable ranged from 0 to 33. Respondents with 0 exam-points have been excluded from the data-set.
+**"points"** is a variable relating to the respondent's exam-points. The original scale of this variable ranged from 0 to 33. Respondents with 0 exam-points have been excluded from the data-set.
 
 ##Graphical overview of the data##
 
