@@ -19,6 +19,9 @@ library(tidyverse)
 install.packages("dplyr")
 install.packages("ggplot2")
 library(dplyr)
+install.packages("GGally")
+library(GGally)
+library(ggplot2)
 
 # Data-wrangling attempts:
 
@@ -33,7 +36,8 @@ summary(lrn14$Age)
 # The summary provided me with the age-range of the respondents from 17 to 55 years. The average-age of the respondents is 25,58 years. The median-age is 22.
 
 #printing and summarizing "Points"
-lrn14$Points
+lrn14$points <- lrn14$Points / 10
+lrn14$points
 summary(lrn14$Points)
 # The points reach from 0 to a maximum of 33. The average exam-points are 20,61. The Median-value of the Variable points is 22.00.
 
@@ -87,18 +91,25 @@ lrn14$stra <- rowMeans(strategic_columns)
 lrn14$stra
 
 # keeping columns for new dataset
-keep_columns <- c("gender","Age","Attitude", "deep", "stra", "surf", "Points")
+keep_columns <- c("gender","Age","attitude", "deep", "stra", "surf", "points")
 learning2014 <- select (lrn14, one_of (keep_columns))
 str(learning2014)
 colnames((learning2014))
 
 # Attempting to exclude those respondents who in their exams had "o" points
-learning2014 <- filter(learning2014, Points > "0")
+learning2014 <- filter(learning2014, points > "0")
 str(learning2014)
 dim(learning2014)
 
 setwd("C:\\Users\\Ani\\Documents\\GitHub\\IODS-project")
 ?write.csv
 ?write.table
-write.csv(learning2014, file = "C:\\Users\\Ani\\Documents\\GitHub\\IODS-project\\data\\learning2014.csv")
+write.csv(learning2014, file = "C:\\Users\\Ani\\Documents\\GitHub\\IODS-project\\data\\learning2014.csv",row.names = FALSE)
 read.table("C:\\Users\\Ani\\Documents\\GitHub\\IODS-project\\data\\learning2014.csv")
+
+dim("C:\\Users\\Ani\\Documents\\GitHub\\IODS-project\\data\\learning2014.csv")
+
+p1 <- ggplot(learning2014, aes(x = Attitude, y = Points))
+p1 <- ggplot(learning2014, aes (x = Attitude, y = Points, col = gender))
+p2 <- p1 + geom_point()
+p2
