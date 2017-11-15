@@ -2,7 +2,7 @@
 
 *Describe the work you have done this week and summarize your learning.*
 
-## 1. Data at a glance##
+##Data at a glance##
 After reading the data into R, I took a glimpse at the provided data. Here are my first observations:
 
 1. The data-set consists of 183 observations relating to 60 variables.
@@ -10,7 +10,7 @@ After reading the data into R, I took a glimpse at the provided data. Here are m
 3. The variable "gender", as a qualitative characteristic, are given as binary text-data in "M" (=male) and "F" (=female).
 4. The variable "Age", is provided as number of years, and derived from the provided year of birth by the respondent. 
 
-## 2. Data-Wrangling Attempts ##
+##Data-Wrangling Attempts ##
 
 **1. I printed and summarized the variable "gender":**
 
