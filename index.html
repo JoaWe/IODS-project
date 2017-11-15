@@ -145,7 +145,8 @@ $(document).ready(function () {
 <li><a href="#week-2-lets-start-with-the-data"><strong>Week 2: Let’s start with the data</strong></a><ul>
 <li><a href="#data-at-a-glance">1. Data at a glance</a></li>
 <li><a href="#data-wrangling-attempts">2. Data-Wrangling Attempts</a></li>
-<li><a href="#trying-to-establish-the-.csv-file">Trying to establish the .csv-file</a></li>
+<li><a href="#trying-to-work-with-the-newly-established-data-set-learning2014">Trying to work with the newly established data-set “learning2014”</a></li>
+<li><a href="#graphical-overview-of-the-data">Graphical overview of the data</a></li>
 </ul></li>
 </ul>
 </div>
@@ -222,9 +223,9 @@ $(document).ready(function () {
 </ul>
 <p>Up to this point, it appears to me as though it worked according to the instructions…</p>
 </div>
-<div id="trying-to-establish-the-.csv-file" class="section level2">
-<h2>Trying to establish the .csv-file</h2>
-<p>It appears, that I have managed to create the file, but I am not sure if I manage any further… Here, I guess, you will be able to see why I am not happy with it…</p>
+<div id="trying-to-work-with-the-newly-established-data-set-learning2014" class="section level2">
+<h2>Trying to work with the newly established data-set “learning2014”</h2>
+<p>It appears, that I have managed to create the csv.file, but I am not sure if I manage any further… Here, I guess, you will be able to see why I am not happy with it…</p>
 <pre class="r"><code>learning2014 &lt;- read.csv(&quot;C:\\Users\\Ani\\Documents\\GitHub\\IODS-project\\data\\learning2014.csv&quot;, header=TRUE)</code></pre>
 <p>Looking at the structure of my dataset:</p>
 <pre class="r"><code>dim(learning2014)</code></pre>
@@ -236,11 +237,11 @@ $(document).ready(function () {
 ##  $ X       : int  1 2 3 4 5 6 7 8 9 10 ...
 ##  $ gender  : Factor w/ 2 levels &quot;F&quot;,&quot;M&quot;: 1 2 1 2 2 1 2 1 2 1 ...
 ##  $ Age     : int  53 55 49 53 49 38 50 37 37 42 ...
-##  $ Attitude: int  37 31 25 35 37 38 35 29 38 21 ...
+##  $ attitude: num  3.7 3.1 2.5 3.5 3.7 3.8 3.5 2.9 3.8 2.1 ...
 ##  $ deep    : num  3.58 2.92 3.5 3.5 3.67 ...
 ##  $ stra    : num  3.38 2.75 3.62 3.12 3.62 ...
 ##  $ surf    : num  2.58 3.17 2.25 2.25 2.83 ...
-##  $ Points  : int  25 12 24 10 22 21 21 31 24 26 ...</code></pre>
+##  $ points  : num  2.5 1.2 2.4 1 2.2 2.1 2.1 3.1 2.4 2.6 ...</code></pre>
 <p>With the exception of this extra-variable which I cannot explain - I’m sorry - it appears that otherwise the 7 variables “gender”, “Age”, “Attitude”, “deep”, “surf”, stra“, and”Points&quot; are there. I furthermore appear to be having the 166 observations. Let’s see how it may, or may not work out with the rest of the tasks…</p>
 <p><strong>“Gender”</strong> represents the respondents sex, in terms of “F” (female) and “M” (male).</p>
 <p><strong>“Age”</strong> represents the age in number of years and is calculated from the year of birth provided by the respective respondent.</p>
@@ -251,7 +252,13 @@ $(document).ready(function () {
 <li><strong>“surf”</strong> is equally set up as the means of 12 questions, which in this case relate to the respondent’s learning habits.</li>
 <li><strong>“stra”</strong> is a combination-variable set up out of the mean ofthe answers given to 8 questions relating to the respondent’s organization habits with regard to their studies.</li>
 </ul>
-<p><strong>“Points”</strong> is a variable relating to the respondent’s exam-points. The original scale of this variable ranged from 0 to 33. For the purpose of this exercise they have been scaled down by the factor 10. Furthermore, respondents with 0 exam-points have been excluded from the data-set.</p>
+<p><strong>“Points”</strong> is a variable relating to the respondent’s exam-points. The original scale of this variable ranged from 0 to 33. Respondents with 0 exam-points have been excluded from the data-set.</p>
+</div>
+<div id="graphical-overview-of-the-data" class="section level2">
+<h2>Graphical overview of the data</h2>
+<ol style="list-style-type: decimal">
+<li>Relating Attitude with Points distinguished by gender (as it was done in the datacamp-exercise):</li>
+</ol>
 <hr />
 </div>
 </div>
