@@ -109,7 +109,13 @@ p1 <- ggplot(learning2014, aes (x = Age, y = points, col = gender))
 p2 <- p1 + geom_point()
 p2
 
+summary(learning2014$Age)
+summary(learning2014$points)
+
 ```
+The summary of the variable *"Age"* shows that the minimum-age of the respondents is 17, the maximimum-age 55. The plot, thereby indicates that the majority of the respondents is to be found within the age-group of up to 30 years.
+The summary of the variable *points* displays that the respondent with the least points has 0.7, while the respondent with the highest points has 3.3. Furthermore, the plot indicates that the respondents with the higher points are up to 40 years old.
+
 
 2. Relating Age with deep distinguished by gender
 
@@ -121,6 +127,8 @@ p1 <- ggplot(learning2014, aes(x = Age, y = deep))
 p1 <- ggplot(learning2014, aes (x = Age, y = deep, col = gender))
 p2 <- p1 + geom_point()
 p2
+
+summary(learning2014$deep)
 
 ```
 
@@ -135,6 +143,8 @@ p1 <- ggplot(learning2014, aes (x = Age, y = surf, col = gender))
 p2 <- p1 + geom_point()
 p2
 
+summary(learning2014$surf)
+
 ```
 
 4. Relating Age with stra distinguished by gender
@@ -148,4 +158,8 @@ p1 <- ggplot(learning2014, aes (x = Age, y = stra, col = gender))
 p2 <- p1 + geom_point()
 p2
 
+summary(learning2014$stra)
+
 ```
+
+
