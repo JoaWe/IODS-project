@@ -102,9 +102,13 @@ It appears that the 7 variables "gender", "Age", "attitude", "deep", "surf", str
 
 ```{r first plot}
 
-p1 <- ggplot(learning2014, aes(x = attitude, y = points))
-p1 <- ggplot(learning2014, aes (x = attitude, y = points, col = gender))
+library(ggplot2)
+
+p1 <- ggplot(learning2014, aes(x = Age, y = points))
+p1 <- ggplot(learning2014, aes (x = Age, y = points, col = gender))
 p2 <- p1 + geom_point()
 p2
 
 ```
+
+
