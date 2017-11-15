@@ -1,3 +1,5 @@
+
+
 # **Week 2: Let's start with the data**
 
 *Describe the work you have done this week and summarize your learning.*
@@ -52,7 +54,13 @@ Up to this point, it appears to me as though it worked according to the instruct
 
 ##Trying to establish the .csv-file##
 
-It appears, that I have managed to create the file, but I am not sure if I manage any further...
+It appears, that I have managed to create the file, but I am not sure if I manage any further... Here, I guess, you will be able to see why I am not happy with it...
+
+```{r }
+
+read.table("C:\\Users\\Ani\\Documents\\GitHub\\IODS-project\\data\\learning2014.csv")
+
+```
 
 - Describe your work and results clearly.
 - Assume the reader has an introductory course level understanding of writing and reading R code as well as statistical methods
