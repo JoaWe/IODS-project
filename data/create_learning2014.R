@@ -22,7 +22,8 @@ library(dplyr)
 install.packages("GGally")
 library(GGally)
 library(ggplot2)
-
+install.packages('ggplot2', dep = TRUE)
+library(ggplot2)
 # Data-wrangling attempts:
 
 # printing and summarizing "gender"
@@ -109,7 +110,7 @@ read.table("C:\\Users\\Ani\\Documents\\GitHub\\IODS-project\\data\\learning2014.
 
 dim("C:\\Users\\Ani\\Documents\\GitHub\\IODS-project\\data\\learning2014.csv")
 
-p1 <- ggplot(learning2014, aes(x = Attitude, y = Points))
-p1 <- ggplot(learning2014, aes (x = Attitude, y = Points, col = gender))
+p1 <- ggplot(learning2014, aes(x = attitude, y = points))
+p1 <- ggplot(learning2014, aes (x = attitude, y = points, col = gender))
 p2 <- p1 + geom_point()
 p2
