@@ -163,12 +163,12 @@ summary(learning2014$stra)
 ```
 ##Attempting multiple regression##
 
-With the next code I have attempted to undertake multiple regression with, based on the variables "attitude", "deep", and "age", incl. the diagnostic plots:
+With the next code I have attempted to undertake multiple regression with points as the target-variable, based on the variables "attitude", "stra", and "surf", incl. the diagnostic plots:
 ```{r regression}
 
 library(ggplot2)
 
-my_model2 <- lm(points ~ attitude + deep + Age, data = learning2014)
+my_model2 <- lm(points ~ attitude + stra + surf, data = learning2014)
 summary(my_model2)
 
 plot(my_model2, which = c(1, 2, 5))
