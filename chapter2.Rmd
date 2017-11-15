@@ -21,6 +21,33 @@ After reading the data into R, I took a glimpse at the provided data. Here are m
   - The age-range is between 17 and 55 years.
   - The average age is 25,58 years.
   - The median-age is 22 years.
+  
+**3. I printed and summarized the variable "Points"**
+ 
+  - At this point the variable ranges between 0 and 33.
+  - The average points are 20,61.
+  - The median-value is 22,00 points.
+  
+**4. I scaled down the variable "Attitude" by 10, afterwards I printed and summarized it**
+ 
+  - The variable - according to the additional information homepage - intends to reflect the respondent's "global attitude towards statistics"
+  - The range of the variable-values is now between 1,4 and 5,00. 
+  - The average-value is 3,121.
+  - The Median-value is 3,2.
+  
+**5. I attempted to establish the combination variables "deep_questions", "surface_questions", and "strategic_questions"**
+
+  - I combined the variables for each as it was done in the datacamp-exercises ("deep_questions" and "surface_questions" thus resulted out of a combination of 12 variables each, while "strategic_questions" became a combination of 8 variables).
+  - Next I created the columns out of the individual new variables and named them "deep_columns", "surface_columns", and "startegic_columns".
+  - I attemped to apply the rowMeans function on each. While in the print outs it showed me the columns results, I could not get the summarise function to work. I am not sure if that is supposed to be that way.
+  
+**6. I created the new data-set "learning2014"**
+
+  - At this point it consisted of 183 observations and 7 variables.
+  - The variable names are "gender", "Age", "Attitude", "deep", "stra", "surf", and "Points".
+  - After I tried to exclude respondents with 0 points within the "Points"-variable my dataset consisted of only 166 observations for the 7 given variables. 
+
+Up to this point, it appears to me as though it worked according to the instructions...
 
 - Describe your work and results clearly.
 - Assume the reader has an introductory course level understanding of writing and reading R code as well as statistical methods

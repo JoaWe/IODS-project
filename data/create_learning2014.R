@@ -14,6 +14,10 @@ dim(lrn14)
 #the data-set's structure:
 str(lrn14)
 
+install.packages("tidyverse")
+install.packages("dplyr")
+install.packages("ggplot2")
+library(dplyr)
 
 # Data-wrangling attempts:
 
@@ -47,10 +51,6 @@ lrn14$attitude
 summary(lrn14$attitude)
 #At least that looks like it works...
 
-install.packages("tidyverse")
-install.packages("dplyr")
-install.packages("ggplot2")
-library(dplyr)
 
 #Let's try the combination of variables to "deep_questions" again:
 deep_questions <- c("D03", "D11", "D19", "D27", "D07", "D14", "D22", "D30","D06",  "D15", "D23", "D31")
@@ -62,6 +62,7 @@ deep_columns
 
 #applying means to "deep_columns":
 lrn14$deep <- rowMeans(deep_columns)
+lrn14$deep
 
 # combining variables to "surface question"
 surface_questions <- c("SU02","SU10","SU18","SU26", "SU05","SU13","SU21","SU29","SU08","SU16","SU24","SU32")
@@ -77,7 +78,7 @@ lrn14$surf <- rowMeans(surface_columns)
 lrn14$surf
 summarise(lrn14$surf)
 
-#creating variable "surface_questions"
+#creating variable "strategic_questions"
 strategic_questions <- c("ST01","ST09","ST17","ST25","ST04","ST12","ST20","ST28")
 strategic_questions
 summarise(strategic_questions)
@@ -91,8 +92,17 @@ lrn14$stra <- rowMeans(strategic_columns)
 lrn14$stra
 
 # keeping columns for new dataset
-keep_columns <- c("gender","age","Attitude", "deep", "stra", "surf", "points")
+keep_columns <- c("gender","Age","Attitude", "deep", "stra", "surf", "Points")
 learning2014 <- select (lrn14, one_of (keep_columns))
 str(learning2014)
+colnames((learning2014))
 
+# Attempting to exclude those respondents who in their exams had "o" points
+learning2014 <- filter(learning2014, Points > "0")
+str(learning2014)
+dim(learning2014)
 
+setwd("C:\\Users\\Ani\\Documents\\GitHub\\IODS-project")
+?write.csv
+?write.table
+write.csv(learning2014, file = "C:\\Users\\Ani\\Documents\\GitHub\\IODS-project\\data\\learning2014.csv")
