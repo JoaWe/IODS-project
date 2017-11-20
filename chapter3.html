@@ -138,9 +138,13 @@ $(document).ready(function () {
 <p>1.<strong>alc_use</strong>: The average of the answers related to weekday and weekend alcohol consumption have been taken.</p>
 <p>2.<strong>high_use</strong>: Then the newly created variable “alc_use” has been utilized to create a second new variable “high_use”, which is TRUE for students for whom “alc_use”&quot; is greater than 2.</p>
 <p>Accordingly, this new dataset now contains 382 observations relating to 35 variables.</p>
-<p>Reading the joined student alcohol-consumption data into R from my data-folder:</p>
+<ul>
+<li>Reading the joined student alcohol-consumption data into R from my data-folder:</li>
+</ul>
 <pre class="r"><code>alc &lt;- read.csv(&quot;C:\\Users\\Ani\\Documents\\GitHub\\IODS-project\\data\\alc.csv&quot;, header=TRUE)</code></pre>
-<p>Summarizing my data-set:</p>
+<ul>
+<li>Summarizing my data-set:</li>
+</ul>
 <pre class="r"><code>summary(alc)</code></pre>
 <pre><code>##  school   sex          age        address famsize   Pstatus
 ##  GP:342   F:198   Min.   :15.00   R: 81   GT3:278   A: 38  
@@ -198,6 +202,17 @@ $(document).ready(function () {
 ##                 
 ##                 
 ## </code></pre>
+<ul>
+<li>Listing the column-names:</li>
+</ul>
+<pre class="r"><code>colnames(alc)</code></pre>
+<pre><code>##  [1] &quot;school&quot;     &quot;sex&quot;        &quot;age&quot;        &quot;address&quot;    &quot;famsize&quot;   
+##  [6] &quot;Pstatus&quot;    &quot;Medu&quot;       &quot;Fedu&quot;       &quot;Mjob&quot;       &quot;Fjob&quot;      
+## [11] &quot;reason&quot;     &quot;nursery&quot;    &quot;internet&quot;   &quot;guardian&quot;   &quot;traveltime&quot;
+## [16] &quot;studytime&quot;  &quot;failures&quot;   &quot;schoolsup&quot;  &quot;famsup&quot;     &quot;paid&quot;      
+## [21] &quot;activities&quot; &quot;higher&quot;     &quot;romantic&quot;   &quot;famrel&quot;     &quot;freetime&quot;  
+## [26] &quot;goout&quot;      &quot;Dalc&quot;       &quot;Walc&quot;       &quot;health&quot;     &quot;absences&quot;  
+## [31] &quot;G1&quot;         &quot;G2&quot;         &quot;G3&quot;         &quot;alc_use&quot;    &quot;high_use&quot;</code></pre>
 </div>
 </div>
 </div>

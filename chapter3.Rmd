@@ -30,7 +30,7 @@ Two new variables, "alc_use" and "high_use", have been established in the new da
 Accordingly, this new dataset now contains 382 observations relating to 35 variables.
 
 
-Reading the joined student alcohol-consumption data into R from my data-folder:
+- Reading the joined student alcohol-consumption data into R from my data-folder:
 
 ```{r }
 
@@ -38,7 +38,7 @@ alc <- read.csv("C:\\Users\\Ani\\Documents\\GitHub\\IODS-project\\data\\alc.csv"
 
 ```
 
-Summarizing my data-set:
+- Summarizing my data-set:
 
 ```{r summary}
 
@@ -46,3 +46,10 @@ summary(alc)
 
 ```
 
+- Listing the column-names:
+
+```{r colnames}
+
+colnames(alc)
+
+```
