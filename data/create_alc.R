@@ -1,6 +1,7 @@
 #Joana
 #20.11.2017
-#working on combined datasets based on the datasets provided by the UCI Machine Learning Repository
+#working on combined datasets based on the datasets provided by the UCI Machine Learning Repository 
+#Reference to original dataset: P. Cortez and A. Silva. Using Data Mining to Predict Secondary School Student Performance. In A. Brito and J. Teixeira Eds., Proceedings of 5th FUture BUsiness TEChnology Conference (FUBUTEC 2008) pp. 5-12, Porto, Portugal, April, 2008, EUROSIS, ISBN 978-9077381-39-7. 
 
 
 ### Part 1: Data-wrangling:

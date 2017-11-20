@@ -1,1 +1,48 @@
 #**Week 3: Logistic Regression**#
+
+##Data at a glance##
+
+####The original Datasets:####
+
+The data-set used here is based on the datasets provided by the [UCI Machine Learning Repository](https://archive.ics.uci.edu/ml/datasets/Student+Performance).
+
+Citation of the dataset-reference:
+*P. Cortez and A. Silva. Using Data Mining to Predict Secondary School Student Performance. In A. Brito and J. Teixeira Eds., Proceedings of 5th FUture BUsiness TEChnology Conference (FUBUTEC 2008) pp. 5-12, Porto, Portugal, April, 2008, EUROSIS, ISBN 978-9077381-39-7.*
+
+The original datasets "student_mat.csv" (including 395 observations and 33 variables, with regard to the subject of mathematics) and "student_por.csv" (consisting of 649 observations and 33 variables, relating to the subject of Portuguese) were established from data collected at two Portuguese secondary schools.
+
+The data attributes of these original datasets include student grades, demographic, social and school related features) and it was collected by using school reports and questionnaires.
+
+
+####The altered dataset used in this project:####
+
+In order to look at my data-wrangling coding for this week's exercise, feel free to [go this way](https://github.com/JoaWe/IODS-project/blob/master/data/create_alc.R).
+
+The two datasets were joined by means of using the variables "school", "sex", "age", "address", "famsize", "Pstatus", "Medu", "Fedu", "Mjob", "Fjob", "reason", "nursery","internet" as identifiers. 
+Only the respondents present in both datasets were kept for the newly established dataset.
+
+Two new variables, "alc_use" and "high_use", have been established in the new dataset, by the following means:
+
+1.**alc_use**: The average of the answers related to weekday and weekend alcohol consumption have been taken.
+
+2.**high_use**: Then the newly created variable "alc_use" has been utilized to create a second new variable "high_use", which is TRUE for students for whom "alc_use"" is greater than 2.
+
+Accordingly, this new dataset now contains 382 observations relating to 35 variables.
+
+
+Reading the joined student alcohol-consumption data into R from my data-folder:
+
+```{r }
+
+alc <- read.csv("C:\\Users\\Ani\\Documents\\GitHub\\IODS-project\\data\\alc.csv", header=TRUE)
+
+```
+
+Summarizing my data-set:
+
+```{r summary}
+
+summary(alc)
+
+```
+

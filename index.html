@@ -149,7 +149,9 @@ $(document).ready(function () {
 <li><a href="#graphical-overview-of-the-data">Graphical overview of the data</a></li>
 <li><a href="#attempting-multiple-regression">Attempting multiple regression</a></li>
 </ul></li>
-<li><a href="#week-3-logistic-regression"><strong>Week 3: Logistic Regression</strong></a></li>
+<li><a href="#week-3-logistic-regression"><strong>Week 3: Logistic Regression</strong></a><ul>
+<li><a href="#data-at-a-glance-1">Data at a glance</a></li>
+</ul></li>
 </ul>
 </div>
 
@@ -361,7 +363,86 @@ plot(my_model2, which = c(1, 2, 5))</code></pre>
 </div>
 <div id="week-3-logistic-regression" class="section level1">
 <h1><strong>Week 3: Logistic Regression</strong></h1>
+<div id="data-at-a-glance-1" class="section level2">
+<h2>Data at a glance</h2>
+<div id="the-original-datasets" class="section level4">
+<h4>The original Datasets:</h4>
+<p>The data-set used here is based on the datasets provided by the <a href="https://archive.ics.uci.edu/ml/datasets/Student+Performance">UCI Machine Learning Repository</a>.</p>
+<p>Citation of the dataset-reference: <em>P. Cortez and A. Silva. Using Data Mining to Predict Secondary School Student Performance. In A. Brito and J. Teixeira Eds., Proceedings of 5th FUture BUsiness TEChnology Conference (FUBUTEC 2008) pp. 5-12, Porto, Portugal, April, 2008, EUROSIS, ISBN 978-9077381-39-7.</em></p>
+<p>The original datasets “student_mat.csv” (including 395 observations and 33 variables, with regard to the subject of mathematics) and “student_por.csv” (consisting of 649 observations and 33 variables, relating to the subject of Portuguese) were established from data collected at two Portuguese secondary schools.</p>
+<p>The data attributes of these original datasets include student grades, demographic, social and school related features) and it was collected by using school reports and questionnaires.</p>
+</div>
+<div id="the-altered-dataset-used-in-this-project" class="section level4">
+<h4>The altered dataset used in this project:</h4>
+<p>In order to look at my data-wrangling coding for this week’s exercise, feel free to <a href="https://github.com/JoaWe/IODS-project/blob/master/data/create_alc.R">go this way</a>.</p>
+<p>The two datasets were joined by means of using the variables “school”, “sex”, “age”, “address”, “famsize”, “Pstatus”, “Medu”, “Fedu”, “Mjob”, “Fjob”, “reason”, “nursery”,“internet” as identifiers. Only the respondents present in both datasets were kept for the newly established dataset.</p>
+<p>Two new variables, “alc_use” and “high_use”, have been established in the new dataset, by the following means:</p>
+<p>1.<strong>alc_use</strong>: The average of the answers related to weekday and weekend alcohol consumption have been taken.</p>
+<p>2.<strong>high_use</strong>: Then the newly created variable “alc_use” has been utilized to create a second new variable “high_use”, which is TRUE for students for whom “alc_use”&quot; is greater than 2.</p>
+<p>Accordingly, this new dataset now contains 382 observations relating to 35 variables.</p>
+<p>Reading the joined student alcohol-consumption data into R from my data-folder:</p>
+<pre class="r"><code>alc &lt;- read.csv(&quot;C:\\Users\\Ani\\Documents\\GitHub\\IODS-project\\data\\alc.csv&quot;, header=TRUE)</code></pre>
+<p>Summarizing my data-set:</p>
+<pre class="r"><code>summary(alc)</code></pre>
+<pre><code>##  school   sex          age        address famsize   Pstatus
+##  GP:342   F:198   Min.   :15.00   R: 81   GT3:278   A: 38  
+##  MS: 40   M:184   1st Qu.:16.00   U:301   LE3:104   T:344  
+##                   Median :17.00                            
+##                   Mean   :16.59                            
+##                   3rd Qu.:17.00                            
+##                   Max.   :22.00                            
+##       Medu            Fedu             Mjob           Fjob    
+##  Min.   :0.000   Min.   :0.000   at_home : 53   at_home : 16  
+##  1st Qu.:2.000   1st Qu.:2.000   health  : 33   health  : 17  
+##  Median :3.000   Median :3.000   other   :138   other   :211  
+##  Mean   :2.806   Mean   :2.565   services: 96   services:107  
+##  3rd Qu.:4.000   3rd Qu.:4.000   teacher : 62   teacher : 31  
+##  Max.   :4.000   Max.   :4.000                                
+##         reason    nursery   internet    guardian     traveltime   
+##  course    :140   no : 72   no : 58   father: 91   Min.   :1.000  
+##  home      :110   yes:310   yes:324   mother:275   1st Qu.:1.000  
+##  other     : 34                       other : 16   Median :1.000  
+##  reputation: 98                                    Mean   :1.448  
+##                                                    3rd Qu.:2.000  
+##                                                    Max.   :4.000  
+##    studytime        failures      schoolsup famsup     paid     activities
+##  Min.   :1.000   Min.   :0.0000   no :331   no :144   no :205   no :181   
+##  1st Qu.:1.000   1st Qu.:0.0000   yes: 51   yes:238   yes:177   yes:201   
+##  Median :2.000   Median :0.0000                                           
+##  Mean   :2.037   Mean   :0.2016                                           
+##  3rd Qu.:2.000   3rd Qu.:0.0000                                           
+##  Max.   :4.000   Max.   :3.0000                                           
+##  higher    romantic      famrel         freetime        goout      
+##  no : 18   no :261   Min.   :1.000   Min.   :1.00   Min.   :1.000  
+##  yes:364   yes:121   1st Qu.:4.000   1st Qu.:3.00   1st Qu.:2.000  
+##                      Median :4.000   Median :3.00   Median :3.000  
+##                      Mean   :3.937   Mean   :3.22   Mean   :3.113  
+##                      3rd Qu.:5.000   3rd Qu.:4.00   3rd Qu.:4.000  
+##                      Max.   :5.000   Max.   :5.00   Max.   :5.000  
+##       Dalc            Walc           health         absences   
+##  Min.   :1.000   Min.   :1.000   Min.   :1.000   Min.   : 0.0  
+##  1st Qu.:1.000   1st Qu.:1.000   1st Qu.:3.000   1st Qu.: 1.0  
+##  Median :1.000   Median :2.000   Median :4.000   Median : 3.0  
+##  Mean   :1.482   Mean   :2.296   Mean   :3.573   Mean   : 4.5  
+##  3rd Qu.:2.000   3rd Qu.:3.000   3rd Qu.:5.000   3rd Qu.: 6.0  
+##  Max.   :5.000   Max.   :5.000   Max.   :5.000   Max.   :45.0  
+##        G1              G2              G3           alc_use     
+##  Min.   : 2.00   Min.   : 4.00   Min.   : 0.00   Min.   :1.000  
+##  1st Qu.:10.00   1st Qu.:10.00   1st Qu.:10.00   1st Qu.:1.000  
+##  Median :12.00   Median :12.00   Median :12.00   Median :1.500  
+##  Mean   :11.49   Mean   :11.47   Mean   :11.46   Mean   :1.889  
+##  3rd Qu.:14.00   3rd Qu.:14.00   3rd Qu.:14.00   3rd Qu.:2.500  
+##  Max.   :18.00   Max.   :18.00   Max.   :18.00   Max.   :5.000  
+##   high_use      
+##  Mode :logical  
+##  FALSE:268      
+##  TRUE :114      
+##                 
+##                 
+## </code></pre>
 <hr />
+</div>
+</div>
 </div>
 
 
