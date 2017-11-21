@@ -151,6 +151,7 @@ $(document).ready(function () {
 </ul></li>
 <li><a href="#week-3-logistic-regression"><strong>Week 3: Logistic Regression</strong></a><ul>
 <li><a href="#data-at-a-glance-1">Data at a glance</a></li>
+<li><a href="#hypotheses-relating-to-students-alcohol-consumption">Hypotheses relating to students’ alcohol-consumption</a></li>
 </ul></li>
 </ul>
 </div>
@@ -371,6 +372,8 @@ plot(my_model2, which = c(1, 2, 5))</code></pre>
 <p>Citation of the dataset-reference: <em>P. Cortez and A. Silva. Using Data Mining to Predict Secondary School Student Performance. In A. Brito and J. Teixeira Eds., Proceedings of 5th FUture BUsiness TEChnology Conference (FUBUTEC 2008) pp. 5-12, Porto, Portugal, April, 2008, EUROSIS, ISBN 978-9077381-39-7.</em></p>
 <p>The original datasets “student_mat.csv” (including 395 observations and 33 variables, with regard to the subject of mathematics) and “student_por.csv” (consisting of 649 observations and 33 variables, relating to the subject of Portuguese) were established from data collected at two Portuguese secondary schools.</p>
 <p>The data attributes of these original datasets include student grades, demographic, social and school related features) and it was collected by using school reports and questionnaires.</p>
+<p>The age range of the respondents lies between 15 and 22 years.</p>
+<p>The three final variables “G1”, “G2”, and “G3” relate to the specific grades the respondent has achieved either in mathematics or in Portuguese, while the other variables operationalize more general conditions of the respective respondent, relating to his or her familial background, school- and leisure-time habits, and general information (i.e., for instance, age and gender).</p>
 </div>
 <div id="the-altered-dataset-used-in-this-project" class="section level4">
 <h4>The altered dataset used in this project:</h4>
@@ -379,10 +382,14 @@ plot(my_model2, which = c(1, 2, 5))</code></pre>
 <p>Two new variables, “alc_use” and “high_use”, have been established in the new dataset, by the following means:</p>
 <p>1.<strong>alc_use</strong>: The average of the answers related to weekday and weekend alcohol consumption have been taken.</p>
 <p>2.<strong>high_use</strong>: Then the newly created variable “alc_use” has been utilized to create a second new variable “high_use”, which is TRUE for students for whom “alc_use”&quot; is greater than 2.</p>
-<p>Accordingly, this new dataset now contains 382 observations relating to 35 variables.</p>
-<p>Reading the joined student alcohol-consumption data into R from my data-folder:</p>
+<p>Accordingly, this new dataset now contains <strong>382 observations relating to 35 variables</strong>.</p>
+<ul>
+<li>Reading the joined student alcohol-consumption data into R from my data-folder:</li>
+</ul>
 <pre class="r"><code>alc &lt;- read.csv(&quot;C:\\Users\\Ani\\Documents\\GitHub\\IODS-project\\data\\alc.csv&quot;, header=TRUE)</code></pre>
-<p>Summarizing my data-set:</p>
+<ul>
+<li>Summarizing my data-set:</li>
+</ul>
 <pre class="r"><code>summary(alc)</code></pre>
 <pre><code>##  school   sex          age        address famsize   Pstatus
 ##  GP:342   F:198   Min.   :15.00   R: 81   GT3:278   A: 38  
@@ -440,6 +447,14 @@ plot(my_model2, which = c(1, 2, 5))</code></pre>
 ##                 
 ##                 
 ## </code></pre>
+<ul>
+<li>the dimensions of the dataset:</li>
+</ul>
+<pre class="r"><code>dim(alc)</code></pre>
+<pre><code>## [1] 382  35</code></pre>
+<ul>
+<li>Listing the column-names, to show the variables:</li>
+</ul>
 <pre class="r"><code>colnames(alc)</code></pre>
 <pre><code>##  [1] &quot;school&quot;     &quot;sex&quot;        &quot;age&quot;        &quot;address&quot;    &quot;famsize&quot;   
 ##  [6] &quot;Pstatus&quot;    &quot;Medu&quot;       &quot;Fedu&quot;       &quot;Mjob&quot;       &quot;Fjob&quot;      
@@ -448,8 +463,21 @@ plot(my_model2, which = c(1, 2, 5))</code></pre>
 ## [21] &quot;activities&quot; &quot;higher&quot;     &quot;romantic&quot;   &quot;famrel&quot;     &quot;freetime&quot;  
 ## [26] &quot;goout&quot;      &quot;Dalc&quot;       &quot;Walc&quot;       &quot;health&quot;     &quot;absences&quot;  
 ## [31] &quot;G1&quot;         &quot;G2&quot;         &quot;G3&quot;         &quot;alc_use&quot;    &quot;high_use&quot;</code></pre>
-<hr />
 </div>
+</div>
+<div id="hypotheses-relating-to-students-alcohol-consumption" class="section level2">
+<h2>Hypotheses relating to students’ alcohol-consumption</h2>
+<p>With regard to higher or lower alcohol-consumption among students cetain hypotheses can be presumed relating to the following <strong>four variables</strong> taken from the newly established dataset “alc.csv”. These hypotheses are to be tested and (dis-)proven here:</p>
+<ol style="list-style-type: decimal">
+<li>It can be assumed that a respective student’s ambitions can impact on his or her alcohol consumption habits. Accordingly, it is hypothesized that there is a negative correlation between the students’ alcohol-consumption and their interest in pursuing a higher education degree.</li>
+</ol>
+<ul>
+<li><strong>independent variable “higher”:</strong> -&gt; reports on whether - or not, the respondent aims for a higher education degree, in a binary fashion of “yes” or “no”.</li>
+</ul>
+<ol start="2" style="list-style-type: decimal">
+<li>Presuming</li>
+</ol>
+<hr />
 </div>
 </div>
 

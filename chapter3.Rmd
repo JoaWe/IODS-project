@@ -13,6 +13,8 @@ The original datasets "student_mat.csv" (including 395 observations and 33 varia
 
 The data attributes of these original datasets include student grades, demographic, social and school related features) and it was collected by using school reports and questionnaires.
 
+The age range of the respondents lies between 15 and 22 years.
+
 The three final variables "G1", "G2", and "G3" relate to the specific grades the respondent has achieved either in mathematics or in Portuguese, while the other variables operationalize more general conditions of the respective respondent, relating to his or her familial background, school- and leisure-time habits, and general information (i.e., for instance, age and gender).
 
 
@@ -50,7 +52,7 @@ summary(alc)
 
 
 - the dimensions of the dataset:
-```{r dim}
+```{r dim2}
 
 dim(alc)
 
@@ -63,3 +65,23 @@ dim(alc)
 colnames(alc)
 
 ```
+
+##Hypotheses relating to students' alcohol-consumption##
+
+With regard to higher or lower alcohol-consumption among students certain hypotheses can be presumed relating to the following **four variables** taken from the newly established dataset "alc.csv". These hypotheses are to be tested and (dis-)proven here:
+
+1. It can be assumed that a respective student's ambitions can impact on his or her alcohol consumption habits. Accordingly, it is hypothesized that there is a negative correlation between the students' alcohol-consumption and their interest in pursuing a higher education degree.
+
+      - **independent variable "higher":** reports on whether - or not, the respondent aims for a higher education degree, in a binary fashion of "yes" or "no".
+
+2. Presuming that the time a student has to spare, two variables are considered to be of interest:
+
+      a) The amount of time a student invests on studying ought to impact on the time a student has to, for instance, consume alcohol; meaning that the more time a student brings up to study the lower should be his or her alcohol consumption:
+      - **independent variable "studytime":** the observations here relate to the amount of studytime that a respondent estimates to be using per week, and they are presented numerically (1 = less than 2 hours; 2 = 2 to 5 hours; 3 = 5 - 10 hours; 4 = more than 10 hours )
+      
+      b) A student's time can also be affected by whether, or not, that student uses his or her time for extra-curricular activities; meaning that a student that spends his or her time on extra-curricular activities, ought to display a lower alcohol-consumption.
+      -**independent variable "activities":** The variable refers to the question of whether, or not, a student parrtakes in extracurricular activities, and it is thus represented in a binary fashion of "yes" or "no". 
+      *The continuation-question that would require the respondents to estimate, how much time, and to report, for example, on the diversity of the respective activities is regrettably not represented in the dataset.*
+3.       
+
+      

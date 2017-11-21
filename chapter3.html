@@ -129,6 +129,7 @@ $(document).ready(function () {
 <p>Citation of the dataset-reference: <em>P. Cortez and A. Silva. Using Data Mining to Predict Secondary School Student Performance. In A. Brito and J. Teixeira Eds., Proceedings of 5th FUture BUsiness TEChnology Conference (FUBUTEC 2008) pp. 5-12, Porto, Portugal, April, 2008, EUROSIS, ISBN 978-9077381-39-7.</em></p>
 <p>The original datasets “student_mat.csv” (including 395 observations and 33 variables, with regard to the subject of mathematics) and “student_por.csv” (consisting of 649 observations and 33 variables, relating to the subject of Portuguese) were established from data collected at two Portuguese secondary schools.</p>
 <p>The data attributes of these original datasets include student grades, demographic, social and school related features) and it was collected by using school reports and questionnaires.</p>
+<p>The age range of the respondents lies between 15 and 22 years.</p>
 <p>The three final variables “G1”, “G2”, and “G3” relate to the specific grades the respondent has achieved either in mathematics or in Portuguese, while the other variables operationalize more general conditions of the respective respondent, relating to his or her familial background, school- and leisure-time habits, and general information (i.e., for instance, age and gender).</p>
 </div>
 <div id="the-altered-dataset-used-in-this-project" class="section level4">
@@ -220,6 +221,26 @@ $(document).ready(function () {
 ## [26] &quot;goout&quot;      &quot;Dalc&quot;       &quot;Walc&quot;       &quot;health&quot;     &quot;absences&quot;  
 ## [31] &quot;G1&quot;         &quot;G2&quot;         &quot;G3&quot;         &quot;alc_use&quot;    &quot;high_use&quot;</code></pre>
 </div>
+</div>
+<div id="hypotheses-relating-to-students-alcohol-consumption" class="section level2">
+<h2>Hypotheses relating to students’ alcohol-consumption</h2>
+<p>With regard to higher or lower alcohol-consumption among students certain hypotheses can be presumed relating to the following <strong>four variables</strong> taken from the newly established dataset “alc.csv”. These hypotheses are to be tested and (dis-)proven here:</p>
+<ol style="list-style-type: decimal">
+<li><p>It can be assumed that a respective student’s ambitions can impact on his or her alcohol consumption habits. Accordingly, it is hypothesized that there is a negative correlation between the students’ alcohol-consumption and their interest in pursuing a higher education degree.</p>
+<ul>
+<li><strong>independent variable “higher”:</strong> reports on whether - or not, the respondent aims for a higher education degree, in a binary fashion of “yes” or “no”.</li>
+</ul></li>
+<li><p>Presuming that the time a student has to spare, two variables are considered to be of interest:</p>
+<ol style="list-style-type: lower-alpha">
+<li>The amount of time a student invests on studying ought to impact on the time a student has to, for instance, consume alcohol; meaning that the more time a student brings up to study the lower should be his or her alcohol consumption:</li>
+</ol>
+<ul>
+<li><strong>independent variable “studytime”:</strong> the observations here relate to the amount of studytime that a respondent estimates to be using per week, and they are presented numerically (1 = less than 2 hours; 2 = 2 to 5 hours; 3 = 5 - 10 hours; 4 = more than 10 hours )</li>
+</ul>
+<ol start="2" style="list-style-type: lower-alpha">
+<li>A student’s time can also be affected by whether, or not, that student uses his or her time for extra-curricular activities; meaning that a student that spends his or her time on extra-curricular activities, ought to display a lower alcohol-consumption. -<strong>independent variable “activities”:</strong> The variable refers to the question of whether, or not, a student parrtakes in extracurricular activities, and it is thus represented in a binary fashion of “yes” or “no”. <em>The continuation-question that would require the respondents to estimate, how much time, and to report, for example, on the diversity of the respective activities is not represented in the dataset.</em></li>
+</ol></li>
+</ol>
 </div>
 </div>
 
