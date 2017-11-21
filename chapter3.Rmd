@@ -42,17 +42,17 @@ alc <- read.csv("C:\\Users\\Ani\\Documents\\GitHub\\IODS-project\\data\\alc.csv"
 
 ```
 
-- Summarizing my data-set:
+- structure of my data-set:
 
-```{r summary}
+```{r str_alc}
 
-summary(alc)
+str(alc)
 
 ```
 
 
 - the dimensions of the dataset:
-```{r dim2}
+```{r dim_alc}
 
 dim(alc)
 
