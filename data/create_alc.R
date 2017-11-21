@@ -29,8 +29,9 @@ colnames(por)
 
 ## Joining common columns as (student) identifiers:
 
-#Accessing dplyr-library:
+#Accessing dplyr- & ggplot-library:
 library(dplyr)
+library(ggplot2)
 
 # common columns by which the datasets are to be joined:
 join_by <- c("school","sex","age","address","famsize","Pstatus","Medu","Fedu","Mjob","Fjob","reason","nursery","internet")

@@ -61,24 +61,45 @@ dim(alc)
 
 ##Hypotheses relating to students' alcohol-consumption##
 
+Accessing libraries:
+``` {r accessing libraries}
+
+library(tidyr) 
+library(dplyr) 
+library(ggplot2)
+
+```
+
+
 With regard to higher or lower alcohol-consumption among students certain hypotheses can be presumed relating to the following **four variables** taken from the newly established dataset "alc.csv". These hypotheses are to be tested and (dis-)proven here.
 The dependent variables of interest are...
 
-...**"alc_use"**, which displays the average-answers related to weekday and weekend alcohol consumption. For a brief glimpse at the respective variable, see the summary here:
+...**"alc_use"**, which displays the average-answers related to weekday and weekend alcohol consumption (from 1 = very low consumption to 5 = very high consumption) . For a brief glimpse at the respective variable, see the barplot here:
 
-```{r summary_alc$alc_use}
+```{r alc$alc_use & barplot}
 
-summary(alc$alc_use)
+g1 <- ggplot(data = alc, aes(x = alc_use))
+
+g1 + geom_bar()
 
 ```
+
+
 
 ...and **"high_use"**, which is a logical column based on the variable *"alc_use"*. High usage of alcohol-consumption is therein defined asbeing TRUE, if the observation in the alc_use-variable is greater than 2. Take a sneak-peak at the summary of this variable: 
 
-```{r summary_alc$high_use}
+```{r alc$high_use & barplot}
 
 summary(alc$high_use)
 
+g2 <- ggplot(alc, aes(high_use))
+
+g2 + facet_wrap("sex") + geom_bar()
+
 ```
+
+```
+
 
 1. It can be assumed that a respective student's ambitions can impact on his or her alcohol consumption habits. Accordingly, it is hypothesized that there is a negative correlation between the students' alcohol-consumption and their interest in pursuing a higher education degree.
 
@@ -91,7 +112,7 @@ summary(alc$higher)
 ```
      
 An interesting observation at this point is that only 18 out of the 382 respondents of this dataset are *not* interested in achieving a higher educational degree.
-      
+
 
 2. Presuming that the time a student has to spare impacts on his or her alcohol-consumption level, two variables are considered to be of interest:
 
