@@ -29,7 +29,7 @@ Two new variables, "alc_use" and "high_use", have been established in the new da
 
 2.**high_use**: Then the newly created variable "alc_use" has been utilized to create a second new variable "high_use", which is TRUE for students for whom "alc_use"" is greater than 2.
 
-Accordingly, this new dataset now contains 382 observations relating to 35 variables.
+Accordingly, this new dataset now contains **382 observations relating to 35 variables**.
 
 
 - Reading the joined student alcohol-consumption data into R from my data-folder:
@@ -56,7 +56,7 @@ dim(alc)
 
 ```
 
-- Listing the column-names:
+- Listing the column-names, to show the variables:
 
 ```{r colnames}
 
