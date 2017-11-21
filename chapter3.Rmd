@@ -58,6 +58,15 @@ dim(alc)
 
 ```
 
+An interesting inside into the newly established dataset is provided by looking at the summary of the variable "sex":
+
+```{r summary_alc$sex}
+
+summary(alc$sex)
+
+```
+It makes clear that, while the gender-representation of the respondents may not be an exact 50% of the total number of respondents, it does come sufficiantly close (~52% of the respondents are female). This information may come in useeful in the further analysis.
+
 
 ##Hypotheses relating to students' alcohol-consumption##
 
@@ -71,22 +80,27 @@ library(ggplot2)
 ```
 
 
+#### General explanations with regard to the alcohol-consumption variables####
+
 With regard to higher or lower alcohol-consumption among students certain hypotheses can be presumed relating to the following **four variables** taken from the newly established dataset "alc.csv". These hypotheses are to be tested and (dis-)proven here.
 The dependent variables of interest are...
 
 ...**"alc_use"**, which displays the average-answers related to weekday and weekend alcohol consumption (from 1 = very low consumption to 5 = very high consumption) . For a brief glimpse at the respective variable, see the barplot here:
 
+
 ```{r alc$alc_use & barplot}
 
-g1 <- ggplot(data = alc, aes(x = alc_use))
+g1 <- ggplot(data = alc, aes(x = alc_use, fill = sex))
 
 g1 + geom_bar()
 
 ```
 
+*This plot shows that the majority of the questionaires' respondents claim to have a very low alcohol-consumption level. It also shows that particularly the majority of the female respondents sees themselves consuming very low to medium levels of alcohol.
+The variable is, however, a combination based on the averages of the respondents' answers to the actual questions of weekday- and weekend-consumption of alcohol. Accordingly, generalizations have to be treated with care.*
 
 
-...and **"high_use"**, which is a logical column based on the variable *"alc_use"*. High usage of alcohol-consumption is therein defined asbeing TRUE, if the observation in the alc_use-variable is greater than 2. Take a sneak-peak at the summary of this variable: 
+...and **"high_use"**, which is a logical column based on the variable *"alc_use"*. High usage of alcohol-consumption is therein defined as being TRUE, if the observation in the alc_use-variable is greater than 2. Take a sneak-peak at the summary of this variable: 
 
 ```{r alc$high_use & barplot}
 
@@ -98,12 +112,13 @@ g2 + facet_wrap("sex") + geom_bar()
 
 ```
 
-```
+*For the interpretation of this bar-plot it needs to be remembered that the variable "high_use" is a logical column. Similar to the variable "alc_use" it was not directly answered by the respondents. The barplot shows that the majorities of both male and female respondents supposedly consume alcohol on low levels.*
 
+#####1. Hypothesis:##### 
+It can be assumed that a respective student's ambitions can impact on his or her alcohol consumption habits. Accordingly, it is hypothesized that there is a negative correlation between the students' alcohol-consumption and their interest in pursuing a higher education degree.
 
-1. It can be assumed that a respective student's ambitions can impact on his or her alcohol consumption habits. Accordingly, it is hypothesized that there is a negative correlation between the students' alcohol-consumption and their interest in pursuing a higher education degree.
-
-       - **independent variable "higher":** reports on whether - or not, the respondent aims for a higher education degree, in a binary fashion of "yes" or "no". The summary of this variable follows here:
+**dependent variable "higher":** 
+reports on whether - or not, the respondent aims for a higher education degree, in a binary fashion of "yes" or "no". The summary of this variable follows here:
 
 ```{r summary_alc$higher}
 
@@ -113,8 +128,27 @@ summary(alc$higher)
      
 An interesting observation at this point is that only 18 out of the 382 respondents of this dataset are *not* interested in achieving a higher educational degree.
 
+- creating a boxplot:
 
-2. Presuming that the time a student has to spare impacts on his or her alcohol-consumption level, two variables are considered to be of interest:
+```{r boxplot alc_use_higher}
+
+library(gmodels)
+g1 <- ggplot(alc, aes(x = higher, y = alc_use))
+g1 <- ggplot(alc, aes(x = higher, y = alc_use, col = sex))
+g1 + geom_boxplot()
+
+```
+
+In order to, to learn how to read a boxplot, you can follow [this link](www.physics.csbsju.edu/stats/box2.html).
+
+**Observations & Interpretation:**
+The boxplot is set up to visualize the potential relation between the variables of "higher" and "alc_use", it includes the distinction of the respondents by gender.
+
+The plot displays fairly interesting observations. On the right side of the plot the respondents with intentions for a higher educational degree and their respective alcohol-consumption levels. 
+
+
+#####2. Hypothesis:#####
+Presuming, that the time a student has to spare, impacts on his or her alcohol-consumption level, two variables are considered to be of interest:
 
       a) The amount of time a student invests on studying ought to impact on the time a student has to, for instance, consume alcohol; meaning that the more time a student brings up to study the lower should be his or her alcohol consumption
       
