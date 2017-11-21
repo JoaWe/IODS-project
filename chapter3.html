@@ -129,6 +129,7 @@ $(document).ready(function () {
 <p>Citation of the dataset-reference: <em>P. Cortez and A. Silva. Using Data Mining to Predict Secondary School Student Performance. In A. Brito and J. Teixeira Eds., Proceedings of 5th FUture BUsiness TEChnology Conference (FUBUTEC 2008) pp. 5-12, Porto, Portugal, April, 2008, EUROSIS, ISBN 978-9077381-39-7.</em></p>
 <p>The original datasets “student_mat.csv” (including 395 observations and 33 variables, with regard to the subject of mathematics) and “student_por.csv” (consisting of 649 observations and 33 variables, relating to the subject of Portuguese) were established from data collected at two Portuguese secondary schools.</p>
 <p>The data attributes of these original datasets include student grades, demographic, social and school related features) and it was collected by using school reports and questionnaires.</p>
+<p>The three final variables “G1”, “G2”, and “G3” relate to the specific grades the respondent has achieved either in mathematics or in Portuguese, while the other variables operationalize more general conditions of the respective respondent, relating to his or her familial background, school- and leisure-time habits, and general information (i.e., for instance, age and gender).</p>
 </div>
 <div id="the-altered-dataset-used-in-this-project" class="section level4">
 <h4>The altered dataset used in this project:</h4>
@@ -202,6 +203,11 @@ $(document).ready(function () {
 ##                 
 ##                 
 ## </code></pre>
+<ul>
+<li>the dimensions of the dataset:</li>
+</ul>
+<pre class="r"><code>dim(alc)</code></pre>
+<pre><code>## [1] 382  35</code></pre>
 <ul>
 <li>Listing the column-names:</li>
 </ul>

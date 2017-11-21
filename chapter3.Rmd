@@ -13,6 +13,8 @@ The original datasets "student_mat.csv" (including 395 observations and 33 varia
 
 The data attributes of these original datasets include student grades, demographic, social and school related features) and it was collected by using school reports and questionnaires.
 
+The three final variables "G1", "G2", and "G3" relate to the specific grades the respondent has achieved either in mathematics or in Portuguese, while the other variables operationalize more general conditions of the respective respondent, relating to his or her familial background, school- and leisure-time habits, and general information (i.e., for instance, age and gender).
+
 
 ####The altered dataset used in this project:####
 
@@ -43,6 +45,14 @@ alc <- read.csv("C:\\Users\\Ani\\Documents\\GitHub\\IODS-project\\data\\alc.csv"
 ```{r summary}
 
 summary(alc)
+
+```
+
+
+- the dimensions of the dataset:
+```{r dim}
+
+dim(alc)
 
 ```
 
