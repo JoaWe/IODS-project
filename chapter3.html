@@ -189,39 +189,51 @@ $(document).ready(function () {
 </ul>
 <pre class="r"><code>dim(alc)</code></pre>
 <pre><code>## [1] 382  35</code></pre>
-<ul>
-<li>Listing the column-names, to show the variables:</li>
-</ul>
-<pre class="r"><code>colnames(alc)</code></pre>
-<pre><code>##  [1] &quot;school&quot;     &quot;sex&quot;        &quot;age&quot;        &quot;address&quot;    &quot;famsize&quot;   
-##  [6] &quot;Pstatus&quot;    &quot;Medu&quot;       &quot;Fedu&quot;       &quot;Mjob&quot;       &quot;Fjob&quot;      
-## [11] &quot;reason&quot;     &quot;nursery&quot;    &quot;internet&quot;   &quot;guardian&quot;   &quot;traveltime&quot;
-## [16] &quot;studytime&quot;  &quot;failures&quot;   &quot;schoolsup&quot;  &quot;famsup&quot;     &quot;paid&quot;      
-## [21] &quot;activities&quot; &quot;higher&quot;     &quot;romantic&quot;   &quot;famrel&quot;     &quot;freetime&quot;  
-## [26] &quot;goout&quot;      &quot;Dalc&quot;       &quot;Walc&quot;       &quot;health&quot;     &quot;absences&quot;  
-## [31] &quot;G1&quot;         &quot;G2&quot;         &quot;G3&quot;         &quot;alc_use&quot;    &quot;high_use&quot;</code></pre>
 </div>
 </div>
 <div id="hypotheses-relating-to-students-alcohol-consumption" class="section level2">
 <h2>Hypotheses relating to students’ alcohol-consumption</h2>
-<p>With regard to higher or lower alcohol-consumption among students certain hypotheses can be presumed relating to the following <strong>four variables</strong> taken from the newly established dataset “alc.csv”. These hypotheses are to be tested and (dis-)proven here:</p>
+<p>With regard to higher or lower alcohol-consumption among students certain hypotheses can be presumed relating to the following <strong>four variables</strong> taken from the newly established dataset “alc.csv”. These hypotheses are to be tested and (dis-)proven here. The dependent variables of interest are…</p>
+<p>…<strong>“alc_use”</strong>, which displays the average-answers related to weekday and weekend alcohol consumption. For a brief glimpse at the respective variable, see the summary here:</p>
+<pre class="r"><code>summary(alc$alc_use)</code></pre>
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   1.000   1.000   1.500   1.889   2.500   5.000</code></pre>
+<p>…and <strong>“high_use”</strong>, which is a logical column based on the variable <em>“alc_use”</em>. High usage of alcohol-consumption is therein defined asbeing TRUE, if the observation in the alc_use-variable is greater than 2. Take a sneak-peak at the summary of this variable:</p>
+<pre class="r"><code>summary(alc$high_use)</code></pre>
+<pre><code>##    Mode   FALSE    TRUE 
+## logical     268     114</code></pre>
 <ol style="list-style-type: decimal">
 <li><p>It can be assumed that a respective student’s ambitions can impact on his or her alcohol consumption habits. Accordingly, it is hypothesized that there is a negative correlation between the students’ alcohol-consumption and their interest in pursuing a higher education degree.</p>
 <ul>
-<li><strong>independent variable “higher”:</strong> reports on whether - or not, the respondent aims for a higher education degree, in a binary fashion of “yes” or “no”.</li>
+<li><strong>independent variable “higher”:</strong> reports on whether - or not, the respondent aims for a higher education degree, in a binary fashion of “yes” or “no”. The summary of this variable follows here:</li>
 </ul></li>
-<li><p>Presuming that the time a student has to spare, two variables are considered to be of interest:</p>
+</ol>
+<pre class="r"><code>summary(alc$higher)</code></pre>
+<pre><code>##  no yes 
+##  18 364</code></pre>
+<p>An interesting observation at this point is that only 18 out of the 382 respondents of this dataset are <em>not</em> interested in achieving a higher educational degree.</p>
+<ol start="2" style="list-style-type: decimal">
+<li><p>Presuming that the time a student has to spare impacts on his or her alcohol-consumption level, two variables are considered to be of interest:</p>
 <ol style="list-style-type: lower-alpha">
-<li>The amount of time a student invests on studying ought to impact on the time a student has to, for instance, consume alcohol; meaning that the more time a student brings up to study the lower should be his or her alcohol consumption:</li>
+<li>The amount of time a student invests on studying ought to impact on the time a student has to, for instance, consume alcohol; meaning that the more time a student brings up to study the lower should be his or her alcohol consumption</li>
 </ol>
-<ul>
-<li><strong>independent variable “studytime”:</strong> the observations here relate to the amount of studytime that a respondent estimates to be using per week, and they are presented numerically (1 = less than 2 hours; 2 = 2 to 5 hours; 3 = 5 - 10 hours; 4 = more than 10 hours )</li>
-</ul>
+<p>-<strong>independent variable “studytime”:</strong> the observations here relate to the amount of studytime that a respondent estimates to be using per week, and they are presented numerically (1 = less than 2 hours; 2 = 2 to 5 hours; 3 = 5 - 10 hours; 4 = more than 10 hours ). <em>A summary of this variable will not be presented here, as due to the nature of the variable’s data, a summary would be missleading.</em></p>
 <ol start="2" style="list-style-type: lower-alpha">
-<li>A student’s time can also be affected by whether, or not, that student uses his or her time for extra-curricular activities; meaning that a student that spends his or her time on extra-curricular activities, ought to display a lower alcohol-consumption. -<strong>independent variable “activities”:</strong> The variable refers to the question of whether, or not, a student parrtakes in extracurricular activities, and it is thus represented in a binary fashion of “yes” or “no”. <em>The continuation-question that would require the respondents to estimate, how much time, and to report, for example, on the diversity of the respective activities is regrettably not represented in the dataset.</em></li>
-</ol></li>
-<li></li>
+<li>A student’s time can also be affected by whether, or not, that student uses his or her time for extra-curricular activities; meaning that a student that spends his or her time on extra-curricular activities, ought to display a lower alcohol-consumption.</li>
 </ol>
+<p>-<strong>independent variable “activities”:</strong> The variable refers to the question of whether, or not, a student partakes in extracurricular activities, and it is thus represented in a binary fashion of “yes” or “no”.</p>
+<p><em>The continuation-question that would require the respondents to estimate, how much time, and to report, for example, on the diversity of the respective activities is regrettably not represented in the dataset.</em></p></li>
+</ol>
+<pre class="r"><code>summary(alc$activities)</code></pre>
+<pre><code>##  no yes 
+## 181 201</code></pre>
+<ol start="3" style="list-style-type: decimal">
+<li><p>The final assumption, to be tested here, concerns whether the familial background, can be considered to play any role in the students’ alcohol-consumption habits. There are several variables included in the dataset that could be drawn on for this hypothesis (e.g.: “famsize”, “Medu”, or “Fedu”):</p>
+<p>-<strong>independent variable “Pstatus”:</strong> The variable depicts the the parents cohabitation-status in a binary fashion, in which “T” represents the parents living together, while “A” represents the parents living apart:</p></li>
+</ol>
+<pre class="r"><code>summary(alc$Pstatus)</code></pre>
+<pre><code>##   A   T 
+##  38 344</code></pre>
 </div>
 </div>
 
