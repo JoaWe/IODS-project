@@ -133,18 +133,28 @@ An interesting observation at this point is that only 18 out of the 382 responde
 ```{r boxplot alc_use_higher}
 
 library(gmodels)
-g1 <- ggplot(alc, aes(x = higher, y = alc_use))
-g1 <- ggplot(alc, aes(x = higher, y = alc_use, col = sex))
-g1 + geom_boxplot()
+g3 <- ggplot(alc, aes(x = higher, y = alc_use))
+g3 <- ggplot(alc, aes(x = higher, y = alc_use, col = sex))
+g3 + geom_boxplot()
 
 ```
 
-In order to, to learn how to read a boxplot, you can follow [this link](www.physics.csbsju.edu/stats/box2.html).
+In order to, to remember how to read a boxplot, you can follow [this link](www.physics.csbsju.edu/stats/box2.html).
 
 **Observations & Interpretation:**
+
 The boxplot is set up to visualize the potential relation between the variables of "higher" and "alc_use", it includes the distinction of the respondents by gender.
 
-The plot displays fairly interesting observations. On the right side of the plot the respondents with intentions for a higher educational degree and their respective alcohol-consumption levels. 
+With the exception of the box, representing the male respondents without higher education (HE) ambitions, the first quartiles start at 1 (meaning very low use of alcohol). A whisker towards the minimum is only displayed with that box (male, "no" for HE ambitions). Upwards whiskers towards the respective maximums are present on all boxes. The box for female respondents with HE-ambitions also contains two exceptions above the maximums.
+On both male-respondent boxes no exceptions are displayed.  
+In the case of the female respondents without HE-ambitions it appears that the median lies in the same position as the 1. quartile. 
+The responses of female students appear to be lying generally in the lower levels than those of their male equivalents. According to the boxplots, the female responses are lying below or equal to  the male responses' medians. 
+
+It appears to be very interesting to me that the female "no" (to HE) respondents in relative terms appear to be consuming the least amounts of alcohol. WHich in their case speaks against the clichee. None of the groups, however, display a consistent excessive amount of alcohol-consumption.
+
+A point that needs to be made, however -- and I apologize, if it appears to be a repition -- that the variable "alc_use" represents the average of two other variables. Averages disguise, for instance extreme exceptions within the mass of observations, similarly, exceptions can raise or lower the averages. Accordingly, these results need to be viewed with care.
+
+Furthermore,  the questions relating to alcohol-consumption are answered subjectively by the respondents. And -- as my hypotheses may indicate -- certain stereotyping with regard to alcohol consumption are undertaken in society, which may result in a certain bias at the point, when the question is answered may be contained in the data.
 
 
 #####2. Hypothesis:#####
@@ -152,8 +162,7 @@ Presuming, that the time a student has to spare, impacts on his or her alcohol-c
 
       a) The amount of time a student invests on studying ought to impact on the time a student has to, for instance, consume alcohol; meaning that the more time a student brings up to study the lower should be his or her alcohol consumption
       
-      -**independent variable "studytime":** the observations here relate to the amount of studytime that a respondent estimates to be using per week, and they are presented numerically (1 = less than 2 hours; 2 = 2 to 5 hours; 3 = 5 - 10 hours; 4 = more than 10 hours ). *A summary of this variable will not be presented here, as due to the nature of the variable's data, a summary would be missleading.*
-
+      -**independent variable "studytime":** the observations here relate to the amount of studytime that a respondent estimates to be using per week, and they are presented numerically (1 = less than 2 hours; 2 = 2 to 5 hours; 3 = 5 - 10 hours; 4 = more than 10 hours ).
 
       b) A student's time can also be affected by whether, or not, that student uses his or her time for extra-curricular activities; meaning that a student that spends his or her time on extra-curricular activities, ought to display a lower alcohol-consumption.
       
@@ -161,19 +170,28 @@ Presuming, that the time a student has to spare, impacts on his or her alcohol-c
             
       *The continuation-question that would require the respondents to estimate, how much time, and to report, for example, on the diversity of the respective activities is regrettably not represented in the dataset.*
       
-```{r summary_alc$activities}
+```{r summary_alc$activities & boxplots alc_use & studytime, alc_use & activities}
 
+summary(alc$studytime)
 summary(alc$activities)
+
+library(ggplot2)
+
+g4 <- ggplot(alc, aes(x = studytime, y = alc_use, col = sex))
+
+g4 + geom_boxplot() 
+
+g5 <- ggplot(alc, aes (x = activities, y = alc_use, col = sex))
+g5 + geom_boxplot()
 
 ```
 
-3. The final assumption, to be tested here, concerns whether the familial background, can be considered to play any role in the students' alcohol-consumption habits. There are several variables included in the dataset that could be drawn on for this hypothesis (e.g.: "famsize", "Medu", or "Fedu"):
+
+#####3. Hypothesis:#####
+The final assumption, to be tested here, concerns whether the familial background, can be considered to play any role in the students' alcohol-consumption habits. There are several variables included in the dataset that could be drawn on for this hypothesis (e.g.: "famsize", "Medu", or "Fedu"):
 
     -**independent variable "Pstatus":** The variable depicts the the parents cohabitation-status in a binary fashion, in which "T" represents the parents living together, while "A" represents the parents living apart:
 
-```{r summary_alc$Pstatus}
 
-summary(alc$Pstatus)
 
-```
-      
+
