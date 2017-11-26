@@ -1,17 +1,22 @@
 #**Clustering and Classification**#
 
-Loading and exploring the data *Boston*:
+####Loading and exploring the data *Boston*:####
 
 
 ```{r loading and exploring "Boston"}
 
-#access MASS-Package
 
+#activating corrplot and tidyr
+library(tidyr)
+library(corrplot)
+
+#access MASS-Package
 library(MASS)
 
 #load the data
 data("Boston")
 
+#exploring the data
 dim(Boston)
 str(Boston)
 summary(Boston)
@@ -19,3 +24,20 @@ summary(Boston)
 ```
 
 The dataset consists of 14 variables including 506 observations relating to the city of Boston.
+
+####Graphical Overview of the dataset:####
+
+
+```{r graphical overview "Boston"}
+
+#calculating the correlation-matrix & rounding
+cor_matrix <- cor(Boston) %>% round(digits = 2)
+
+#printing the correlation-matrix
+cor_matrix
+
+#visualization of the correlation-matrix
+corrplot(cor_matrix, method="circle", type="upper", cl.pos="b", tl.pos="d", tl.cex=0.6)
+
+
+```
