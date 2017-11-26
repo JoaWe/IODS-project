@@ -1,1 +1,21 @@
 #**Clustering and Classification**#
+
+Loading and exploring the data *Boston*:
+
+
+```{r loading and exploring "Boston"}
+
+#access MASS-Package
+
+library(MASS)
+
+#load the data
+data("Boston")
+
+dim(Boston)
+str(Boston)
+summary(Boston)
+
+```
+
+The dataset consists of 14 variables including 506 observations relating to the city of Boston.

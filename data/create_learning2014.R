@@ -25,6 +25,7 @@ library(ggplot2)
 install.packages('ggplot2', dep = TRUE)
 library(ggplot2)
 install.packages("gmodels")
+install.packages("MASS")
 # Data-wrangling attempts:
 
 # printing and summarizing "gender"
