@@ -134,3 +134,40 @@ lda.pred <- predict(lda.fit, newdata = test)
 table(correct = correct_classes, predicted = lda.pred$class)
 
 ```
+
+####Re-Loading "Boston" to apply k-means####
+
+```{r reloading "Boston"}
+
+#load the data
+data("Boston")
+
+```
+
+```{r restandardizing "Boston"}
+
+#center and standardize "Boston"
+boston_scaled_2 <- scale(Boston)
+
+
+#changing the object to a dataframe
+boston_scaled_2 <- as.data.frame(boston_scaled_2)
+
+```
+
+```{r calculating distances between observations}
+
+#eucledian distance matrix
+dist_eu <- dist(Boston)
+
+#summarizing the euclidean distances
+summary(dist_eu)
+
+#manhattan distance matrix
+dist_man <- (Boston, method = 'manhattan')
+
+#summarizing manhattan-distances
+summary(dist_man)
+
+```
+
