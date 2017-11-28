@@ -1,13 +1,21 @@
 #**Clustering and Classification**#
 
-*Clusters* are combined elements of the target population. In certain cases the individual elements cannot (easily) be identified, while lists of the combined elements might be available, and accordingly usable for research.
-A problem that persists by using *cluster samples*, however, is the so called *cluster effect*. This term is used to describe the issue that a certain loss of estimation exactness must be taken into account, because clusters themselves may differ quite a lot from each other, while a cluster's individual elements may display a strong resemblence with one another - sometimes even more similar to one another than within a simple sample. The greater the difference between the clusters, while the similarity of their individual elements increases, the less exact is the clustersampling.
+This exercise is devoted to the themes of *classification* and *clustering*.
+
+*Classification* implies that the individual elements of a target population are categorized with the aid of specific common observations that are known to the researcher in advance. The *classification model* is trained based on the respective data. The aim is to potenially add new observations to the respective classes.
+
+*Clusters* are combined elements of the target population, which cannot be precategorized by the researcher, neither by quantity (the number of elements belonging to each group), nor by quality (meaning the common observations). The aim of cluster-analyses is to find the commonalities by which the individual elements can then be potentially categorized.
+
+This analysis is therefore devided into two main parts:
+
+1. The analysis of classes by means of the *linear discriminant analysis* (LDA), and
+2. the analysis of clustering by means of the *distance measures*, as well as the *k-means*, as one of the more common clustering algorithms.
 
 **The analysis will contain the following steps:**
 
 1. The dataset "Boston" will be briefly introduced, by means of r-functions, as well as, graphical visualization.
 2. The dataset will be standardized, by means of scaling.
-3. A categorical variable - named "crime" will be created, with its aid train- and test-sets will be created.
+3. A categorical variable - named "crime" - will be established, with its aid train- and test-sets will be created.
 4. A linear discriminant analysis (LDA) will be attempted, and hopefully visualized by means of an LDA (bi)plot on the train set.
 5. Predictions based on the former LDA will be attempted.
 6. Finally, the Boston-dataset will be reloaded and standardized, the distances will be calculated, and the k-means algorithm will be applied to the dataset.
@@ -97,7 +105,7 @@ boston_scaled <- as.data.frame(boston_scaled)
 ####Creating Variable "crime"####
 
 In the following steps I intend to create a new categorical variable, named "crime", and use it to replace the original variable "crim".
-The quantiles are used as break points for this categorical variable. Finally the new dataset will be divided to train- and test-sets, so that 80% of the data belongs to the train set.
+The quantiles are used as break points for this categorical variable. Finally, the new dataset will be divided to train- and test-sets, so that 80% of the data belongs to the train-set.
 
 ```{r creating variable crime}
 
@@ -200,7 +208,7 @@ boston_scaled_2 <- as.data.frame(scale(Boston))
 
 ```
 
-##Calculating distances##
+####Calculating distances####
 
 ```{r calculating distances between observations}
 
