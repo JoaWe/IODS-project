@@ -20,6 +20,8 @@ This analysis is therefore devided into two main parts:
 5. Predictions based on the former LDA will be attempted.
 6. Finally, the Boston-dataset will be reloaded and standardized, the distances will be calculated, and the k-means algorithm will be applied to the dataset.
 
+##Introducing the dataset##
+
 ####Loading and exploring the data *Boston*:####
 
 
@@ -67,7 +69,7 @@ Here is a list of the variables and their respective meanings:
 *These definitions and further information can be looked up from [here](https://stat.ethz.ch/R-manual/R-devel/library/MASS/html/Boston.html).*
 
 
-The variable **crim** will be of particular importance in the next steps of this exercise.
+The variable **crim** will be of particular importance in the next steps that are devoted to the issue of classification in this exercise.
 
 
 ####Graphical Overview of the dataset:####
@@ -81,11 +83,35 @@ cor_matrix <- cor(Boston) %>% round(digits = 2)
 cor_matrix
 
 #visualization of the correlation-matrix
-corrplot(cor_matrix, method="circle", type="upper", cl.pos="b", tl.pos="d", tl.cex=0.6)
+corrplot(cor_matrix, method="pie", type="lower", cl.pos="b", tl.pos="d", tl.cex=0.6)
 
 ```
 
+The positive correlations are displayed in blue, while the negative correlations are displayed in red. The respective color-shade, as well as, the size of the "pie-piece" are displayed proportionally to the correlation-coefficients.
 
+*You can get information on how to change certain aspects of the corrplot, as well as, tricks with regard to their interpretation from [here](www.sthda.com/english/wiki/visualize-correlation-matrix-using-correlogram).*
+
+
+####variable summaries####
+
+```{r variable summaries}
+
+summary(Boston$crim)
+summary(Boston$zn)
+summary(Boston$indus)
+summary(Boston$chas)
+summary(Boston$nox)
+summary(Boston$rm)
+summary(Boston$age)
+summary(Boston$dis)
+summary(Boston$rad)
+summary(Boston$tax)
+summary(Boston$ptratio)
+summary(Boston$black)
+summary(Boston$lstat)
+summary(Boston$medv)
+
+```
 
 ####Scaling the dataset "Boston"####
 
