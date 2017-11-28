@@ -6,9 +6,11 @@
 ```{r loading and exploring "Boston"}
 
 
-#activating corrplot and tidyr
+#activating libraries
 library(tidyr)
 library(corrplot)
+library(ggplot2)
+library(dplyr)
 
 #access MASS-Package
 library(MASS)
@@ -28,16 +30,66 @@ The dataset consists of 14 variables including 506 observations relating to the 
 ####Graphical Overview of the dataset:####
 
 
-```{r graphical overview "Boston"}
+####Scaling the dataset "Boston"####
 
-#calculating the correlation-matrix & rounding
-cor_matrix <- cor(Boston) %>% round(digits = 2)
+```{r standardizing "Boston"}
 
-#printing the correlation-matrix
-cor_matrix
+#center and standardize "Boston"
+boston_scaled <- scale(Boston)
 
-#visualization of the correlation-matrix
-corrplot(cor_matrix, method="circle", type="upper", cl.pos="b", tl.pos="d", tl.cex=0.6)
+#summarizing boston scaled
+summary(boston_scaled)
 
+#changing the object to a dataframe
+boston_scaled <- as.data.frame(boston_scaled)
 
 ```
+
+####Creating Variable "crime"####
+
+In the following steps I intend to create a new categorical variable, named "crime", and use it to replace the original variable "crim".
+The quantiles are used as break points for this categorical variable. Finally the new dataset will be divided to train- and test-sets, so that 80% of the data belongs to the train set.
+
+```{r creating variable "crime"}
+
+#summary of scaled variable "crim"
+summary(boston_scaled$crim)
+
+#creating and printing the quantile vector of "crim"
+bins <- quantile(boston_scaled$crim)
+
+#printing quantile vector
+bins
+
+#creating categorical variable "crime"
+crime <- cut(boston_scaled$crim, breaks = bins, include.lowest = TRUE, labels = c("low", "med_low", "med_high", "high"))
+
+#creating table "crime"
+table(crime)
+
+#removing original variable "crim" from the dataset
+boston_scaled <- dplyr::select(boston_scaled, -crim)
+
+#adding new variable to scaled dataset
+boston_scaled <- data.frame(boston_scaled, crime)
+
+#number of rows in the "Boston" dataset
+n <- nrow(boston_scaled)
+
+#choosing 80% of the rows
+ind <- sample(n, size = n * 0.8)
+
+#creating the train-set
+train <- boston_scaled[ind,]
+
+#creating test-set
+test <- boston_scaled[-ind,]
+
+#saving the correct classes from test-data
+correct_classes <- test$crime
+
+#removing the variable "crime" from the test-data
+test <- dplyr::select(test, -crime)
+
+```
+

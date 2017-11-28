@@ -123,14 +123,28 @@ $(document).ready(function () {
 <h1><strong>Clustering and Classification</strong></h1>
 <div id="loading-and-exploring-the-data-boston" class="section level4">
 <h4>Loading and exploring the data <em>Boston</em>:</h4>
-<pre class="r"><code>#activating corrplot and tidyr
+<pre class="r"><code>#activating libraries
 library(tidyr)
 library(corrplot)</code></pre>
 <pre><code>## corrplot 0.84 loaded</code></pre>
+<pre class="r"><code>library(ggplot2)
+library(dplyr)</code></pre>
+<pre><code>## 
+## Attaching package: 'dplyr'</code></pre>
+<pre><code>## The following objects are masked from 'package:stats':
+## 
+##     filter, lag</code></pre>
+<pre><code>## The following objects are masked from 'package:base':
+## 
+##     intersect, setdiff, setequal, union</code></pre>
 <pre class="r"><code>#access MASS-Package
-library(MASS)
-
-#load the data
+library(MASS)</code></pre>
+<pre><code>## 
+## Attaching package: 'MASS'</code></pre>
+<pre><code>## The following object is masked from 'package:dplyr':
+## 
+##     select</code></pre>
+<pre class="r"><code>#load the data
 data(&quot;Boston&quot;)
 
 #exploring the data
@@ -185,42 +199,90 @@ dim(Boston)</code></pre>
 </div>
 <div id="graphical-overview-of-the-dataset" class="section level4">
 <h4>Graphical Overview of the dataset:</h4>
-<pre class="r"><code>#calculating the correlation-matrix &amp; rounding
-cor_matrix &lt;- cor(Boston) %&gt;% round(digits = 2)
+</div>
+<div id="scaling-the-dataset-boston" class="section level4">
+<h4>Scaling the dataset “Boston”</h4>
+<pre class="r"><code>#center and standardize &quot;Boston&quot;
+boston_scaled &lt;- scale(Boston)
 
-#printing the correlation-matrix
-cor_matrix</code></pre>
-<pre><code>##          crim    zn indus  chas   nox    rm   age   dis   rad   tax
-## crim     1.00 -0.20  0.41 -0.06  0.42 -0.22  0.35 -0.38  0.63  0.58
-## zn      -0.20  1.00 -0.53 -0.04 -0.52  0.31 -0.57  0.66 -0.31 -0.31
-## indus    0.41 -0.53  1.00  0.06  0.76 -0.39  0.64 -0.71  0.60  0.72
-## chas    -0.06 -0.04  0.06  1.00  0.09  0.09  0.09 -0.10 -0.01 -0.04
-## nox      0.42 -0.52  0.76  0.09  1.00 -0.30  0.73 -0.77  0.61  0.67
-## rm      -0.22  0.31 -0.39  0.09 -0.30  1.00 -0.24  0.21 -0.21 -0.29
-## age      0.35 -0.57  0.64  0.09  0.73 -0.24  1.00 -0.75  0.46  0.51
-## dis     -0.38  0.66 -0.71 -0.10 -0.77  0.21 -0.75  1.00 -0.49 -0.53
-## rad      0.63 -0.31  0.60 -0.01  0.61 -0.21  0.46 -0.49  1.00  0.91
-## tax      0.58 -0.31  0.72 -0.04  0.67 -0.29  0.51 -0.53  0.91  1.00
-## ptratio  0.29 -0.39  0.38 -0.12  0.19 -0.36  0.26 -0.23  0.46  0.46
-## black   -0.39  0.18 -0.36  0.05 -0.38  0.13 -0.27  0.29 -0.44 -0.44
-## lstat    0.46 -0.41  0.60 -0.05  0.59 -0.61  0.60 -0.50  0.49  0.54
-## medv    -0.39  0.36 -0.48  0.18 -0.43  0.70 -0.38  0.25 -0.38 -0.47
-##         ptratio black lstat  medv
-## crim       0.29 -0.39  0.46 -0.39
-## zn        -0.39  0.18 -0.41  0.36
-## indus      0.38 -0.36  0.60 -0.48
-## chas      -0.12  0.05 -0.05  0.18
-## nox        0.19 -0.38  0.59 -0.43
-## rm        -0.36  0.13 -0.61  0.70
-## age        0.26 -0.27  0.60 -0.38
-## dis       -0.23  0.29 -0.50  0.25
-## rad        0.46 -0.44  0.49 -0.38
-## tax        0.46 -0.44  0.54 -0.47
-## ptratio    1.00 -0.18  0.37 -0.51
-## black     -0.18  1.00 -0.37  0.33
-## lstat      0.37 -0.37  1.00 -0.74
-## medv      -0.51  0.33 -0.74  1.00</code></pre>
-<pre class="r"><code>#visualization of the correlation-matrix</code></pre>
+#summarizing boston scaled
+summary(boston_scaled)</code></pre>
+<pre><code>##       crim                 zn               indus        
+##  Min.   :-0.419367   Min.   :-0.48724   Min.   :-1.5563  
+##  1st Qu.:-0.410563   1st Qu.:-0.48724   1st Qu.:-0.8668  
+##  Median :-0.390280   Median :-0.48724   Median :-0.2109  
+##  Mean   : 0.000000   Mean   : 0.00000   Mean   : 0.0000  
+##  3rd Qu.: 0.007389   3rd Qu.: 0.04872   3rd Qu.: 1.0150  
+##  Max.   : 9.924110   Max.   : 3.80047   Max.   : 2.4202  
+##       chas              nox                rm               age         
+##  Min.   :-0.2723   Min.   :-1.4644   Min.   :-3.8764   Min.   :-2.3331  
+##  1st Qu.:-0.2723   1st Qu.:-0.9121   1st Qu.:-0.5681   1st Qu.:-0.8366  
+##  Median :-0.2723   Median :-0.1441   Median :-0.1084   Median : 0.3171  
+##  Mean   : 0.0000   Mean   : 0.0000   Mean   : 0.0000   Mean   : 0.0000  
+##  3rd Qu.:-0.2723   3rd Qu.: 0.5981   3rd Qu.: 0.4823   3rd Qu.: 0.9059  
+##  Max.   : 3.6648   Max.   : 2.7296   Max.   : 3.5515   Max.   : 1.1164  
+##       dis               rad               tax             ptratio       
+##  Min.   :-1.2658   Min.   :-0.9819   Min.   :-1.3127   Min.   :-2.7047  
+##  1st Qu.:-0.8049   1st Qu.:-0.6373   1st Qu.:-0.7668   1st Qu.:-0.4876  
+##  Median :-0.2790   Median :-0.5225   Median :-0.4642   Median : 0.2746  
+##  Mean   : 0.0000   Mean   : 0.0000   Mean   : 0.0000   Mean   : 0.0000  
+##  3rd Qu.: 0.6617   3rd Qu.: 1.6596   3rd Qu.: 1.5294   3rd Qu.: 0.8058  
+##  Max.   : 3.9566   Max.   : 1.6596   Max.   : 1.7964   Max.   : 1.6372  
+##      black             lstat              medv        
+##  Min.   :-3.9033   Min.   :-1.5296   Min.   :-1.9063  
+##  1st Qu.: 0.2049   1st Qu.:-0.7986   1st Qu.:-0.5989  
+##  Median : 0.3808   Median :-0.1811   Median :-0.1449  
+##  Mean   : 0.0000   Mean   : 0.0000   Mean   : 0.0000  
+##  3rd Qu.: 0.4332   3rd Qu.: 0.6024   3rd Qu.: 0.2683  
+##  Max.   : 0.4406   Max.   : 3.5453   Max.   : 2.9865</code></pre>
+<pre class="r"><code>#changing the object to a dataframe
+boston_scaled &lt;- as.data.frame(boston_scaled)</code></pre>
+</div>
+<div id="creating-variable-crime" class="section level4">
+<h4>Creating Variable “crime”</h4>
+<p>In the following steps I intend to create a new categorical variable, named “crime”, and use it to replace the original variable “crim”. The quantiles are used as break points for this categorical variable. Finally the new dataset will be divided to train- and test-sets, so that 80% of the data belongs to the train set.</p>
+<pre class="r"><code>#summary of scaled variable &quot;crim&quot;
+summary(boston_scaled$crim)</code></pre>
+<pre><code>##      Min.   1st Qu.    Median      Mean   3rd Qu.      Max. 
+## -0.419367 -0.410563 -0.390280  0.000000  0.007389  9.924110</code></pre>
+<pre class="r"><code>#creating and printing the quantile vector of &quot;crim&quot;
+bins &lt;- quantile(boston_scaled$crim)
+
+#printing quantile vector
+bins</code></pre>
+<pre><code>##           0%          25%          50%          75%         100% 
+## -0.419366929 -0.410563278 -0.390280295  0.007389247  9.924109610</code></pre>
+<pre class="r"><code>#creating categorical variable &quot;crime&quot;
+crime &lt;- cut(boston_scaled$crim, breaks = bins, include.lowest = TRUE, labels = c(&quot;low&quot;, &quot;med_low&quot;, &quot;med_high&quot;, &quot;high&quot;))
+
+#creating table &quot;crime&quot;
+table(crime)</code></pre>
+<pre><code>## crime
+##      low  med_low med_high     high 
+##      127      126      126      127</code></pre>
+<pre class="r"><code>#removing original variable &quot;crim&quot; from the dataset
+boston_scaled &lt;- dplyr::select(boston_scaled, -crim)
+
+#adding new variable to scaled dataset
+boston_scaled &lt;- data.frame(boston_scaled, crime)
+
+#number of rows in the &quot;Boston&quot; dataset
+n &lt;- nrow(boston_scaled)
+
+#choosing 80% of the rows
+ind &lt;- sample(n, size = n * 0.8)
+
+#creating the train-set
+train &lt;- boston_scaled[ind,]
+
+#creating test-set
+test &lt;- boston_scaled[-ind,]
+
+#saving the correct classes from test-data
+correct_classes &lt;- test$crime
+
+#removing the variable &quot;crime&quot; from the test-data
+test &lt;- dplyr::select(test, -crime)</code></pre>
 </div>
 </div>
 
