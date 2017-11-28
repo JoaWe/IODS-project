@@ -20,9 +20,9 @@ This analysis is therefore devided into two main parts:
 5. Predictions based on the former LDA will be attempted.
 6. Finally, the Boston-dataset will be reloaded and standardized, the distances will be calculated, and the k-means algorithm will be applied to the dataset.
 
-##Introducing the dataset##
+##Data at a glance##
 
-####Loading and exploring the data *Boston*:####
+###Loading and exploring the data *Boston*:###
 
 
 ```{r loading and exploring Boston}
@@ -88,11 +88,12 @@ corrplot(cor_matrix, method="pie", type="lower", cl.pos="b", tl.pos="d", tl.cex=
 ```
 
 The positive correlations are displayed in blue, while the negative correlations are displayed in red. The respective color-shade, as well as, the size of the "pie-piece" are displayed proportionally to the correlation-coefficients.
+*--> You can get information on how to change certain aspects of the corrplot, as well as, tricks with regard to their interpretation from [here](www.sthda.com/english/wiki/visualize-correlation-matrix-using-correlogram).*
 
-*You can get information on how to change certain aspects of the corrplot, as well as, tricks with regard to their interpretation from [here](www.sthda.com/english/wiki/visualize-correlation-matrix-using-correlogram).*
+This implies that of particular interest are the negative correlations between
+**dis** with the variables **indus**, **nox**, and **age**. On the other hand, outstanding appears to be the positive correlation between **tax** and **rad**.
+The least significant correlations appear to be with the variable **chas**.
 
-
-####variable summaries####
 
 ```{r variable summaries}
 
@@ -111,27 +112,37 @@ summary(Boston$black)
 summary(Boston$lstat)
 summary(Boston$medv)
 
+
 ```
 
-####Scaling the dataset "Boston"####
+###Scaling the dataset "Boston"###
+
+To fit the LDA-model to the dataset two specific assumptions must be fulfilled:
+
+1. On condition of the classes, the variables must be normally distributed.
+2. The variance of each variable must be the same.
+
+In order, to achieve these the dataset "Boston" will now be standardized:
 
 ```{r standardizing Boston}
 
-#center and standardize "Boston"
-boston_scaled <- scale(Boston)
+#center and standardize "Boston" & changing the object to a dataframe
+boston_scaled <- as.data.frame(scale(Boston))
 
 #summarizing boston scaled
 summary(boston_scaled)
 
-#changing the object to a dataframe
-boston_scaled <- as.data.frame(boston_scaled)
-
 ```
 
-####Creating Variable "crime"####
 
-In the following steps I intend to create a new categorical variable, named "crime", and use it to replace the original variable "crim".
+###Creating Variable "crime"###
+
+In the following steps I intend to create a new categorical variable, named **crime**, and use it to replace the original variable **crim**.
 The quantiles are used as break points for this categorical variable. Finally, the new dataset will be divided to train- and test-sets, so that 80% of the data belongs to the train-set.
+
+This new variable contains the categories *low*, *med_low*, *med_high*, and *high*.
+
+**This step is necessary, because the target-variable in an LDA must be categorical!**
 
 ```{r creating variable crime}
 
@@ -176,16 +187,34 @@ test <- dplyr::select(test, -crime)
 
 ```
 
-####The Linear discriminant Analysis (LDA)####
+##The Linear discriminant Analysis (LDA)##
 
+LDA is used for three mainpurposes:
 
-```{r LDA & plot}
+1. the finding of variables that separate the data,
+2. predicting the classes of new data, and
+3. reducing dimensions (though this is not undertaken here).
+
+The LDA will in this part of the exercise be fitted on the train-set. The categorical variable **crime** will serve as the target-variable, while the remaining variables of the dataset are used as predictor-variables.
+
+```{r LDA}
 
 #fitting the lda on the train-set
 lda.fit <- lda(crime~., data = train)
 
 #printing the lda.fit-object
 lda.fit
+
+```
+
+The table above displays the LDA-function outcomes. As can be seen there, the LDA results in four classes (*low*, *med_low*, *med_high*, and *high*). These classes correspond to the four categories, which have been established with the variable "crime".
+The remaining 13 variables are used as the predictor-variables. 
+As the target-variable "crime" resulted in the four above mentioned classes, the produced coefficients of the LDA resulted in a number of three classes (4 classes - 1 = 3; LD1, LD2, and LD3) for each predictor-variable.
+As the *proportion of trace*, which signifies the *between-group-variance*, finally, demonstrates that LD1 explains ca. 95% - 96% of the between-group-variance. 
+
+*Something that I find very interesting - and I am not sure, if it points to me having made a mistake - is that everytime I knit this document anew, the values displayed in the "proportion of trace" appears to be changing a little. I am sure, I have not changed any potentially significant codes, though.*
+
+```{r LDA biplot}
 
 #the function for the lda-biplot arrows
 lda.arrows <- function(x, myscale = 1, arrow_heads = 0.1, color = "orange", tex = 0.75, choices = c(1,2)){
@@ -206,7 +235,23 @@ lda.arrows(lda.fit, myscale = 1)
 
 ```
 
+The LDA-biplot displays the four classes in the following colours:
+
+- black = low
+- red = med_low
+- green = med_high
+- blue = high.
+
+An obviously interesting aspect is that the class "high" is strongly separated from the others (with a few exceptions of "med_high").
+
+The predictor variables are displayed as the orange arrows and they are based on the coefficients displayed in the table shown above the scatterplot. As the length and directions of these arrows displays, how each variable impacts on the LDA-model. Which makes the predictor-variable **rad**, as the one that sticks out from the others (both in direction and length of the arrow) particularly interesting. It is srongly directed towards the *cloud* of "high".
+
+
 ####LDA-predictions####
+
+LDA can serve as a means of classifying new observations. Based on the priorly used LDA-model, the probabilities for the new observations - those 20% of rows earlier sorted to the test-set - belonging to which class can be calculated.
+
+Each of these observations is categorized by belonging to the class in accordance with the highest probability.
 
 ```{r LDA predictions}
 
@@ -218,7 +263,7 @@ table(correct = correct_classes, predicted = lda.pred$class)
 
 ```
 
-####Re-Loading "Boston" to apply k-means####
+##Re-Loading "Boston" to apply k-means##
 
 ```{r reloading Boston}
 
