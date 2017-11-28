@@ -1,5 +1,8 @@
 #**Clustering and Classification**#
 
+*Clusters* are combined elements of the target population. In certain cases the individual elements cannot (easily) be identified, while lists of the combined elements might be available, and accordingly usable for research.
+A problem that persists by using *cluster samples*, however, is the so called *cluster effect*. This term is used to describe the issue that a certain loss of estimation exactness must be taken into account, because clusters themselves may differ quite a lot from each other, while a cluster's individual elements may display a strong resemblence with one another - sometimes even more similar to one another than within a simple sample. The greater the difference between the clusters, while the similarity of their individual elements increases, the less exact is the clustersampling.
+
 ####Loading and exploring the data *Boston*:####
 
 
