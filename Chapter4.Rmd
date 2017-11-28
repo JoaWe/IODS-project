@@ -29,18 +29,7 @@ The dataset consists of 14 variables including 506 observations relating to the 
 
 ####Graphical Overview of the dataset:####
 
-```{r graphical overview "Boston"}
 
-#calculating the correlation-matrix & rounding
-cor_matrix <- cor(Boston) %>% round(digits = 2)
-
-#printing the correlation-matrix
-cor_matrix
-
-#visualization of the correlation-matrix
-corrplot(cor_matrix, method="circle", type="upper", cl.pos="b", tl.pos="d", tl.cex=0.6)
-
-```
 
 
 ####Scaling the dataset "Boston"####
@@ -168,19 +157,27 @@ boston_scaled_2 <- as.data.frame(boston_scaled_2)
 
 ```
 
-```{r calculating distances between observations}
 
-#eucledian distance matrix
-dist_eu <- dist(boston_scaled_2)
 
-#summarizing the euclidean distances
-summary(dist_eu)
+```{r k-means of Boston}
 
-#manhattan distance matrix
-dist_man <- (boston_scaled_2, method = 'manhattan')
+set.seed(123)
 
-#summarizing manhattan-distances
-summary(dist_man)
+#determining the number of clusters
+k_max <- 10
+
+#calculating the total within the sum of squares
+twcss <- sapply(1:k_max, function(k){kmeans(Boston, k)$tot.withinss})
+
+#visualizing results
+qplot(x = 1:k_max, y = twcss, geom = 'line')
+
+#k-means clustering
+km <- kmeans(Boston, centers = 2)
+
+#plotting "Boston" with clusters
+pairs(Boston, col = km$cluster)
 
 ```
+
 
