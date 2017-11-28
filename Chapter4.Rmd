@@ -3,6 +3,15 @@
 *Clusters* are combined elements of the target population. In certain cases the individual elements cannot (easily) be identified, while lists of the combined elements might be available, and accordingly usable for research.
 A problem that persists by using *cluster samples*, however, is the so called *cluster effect*. This term is used to describe the issue that a certain loss of estimation exactness must be taken into account, because clusters themselves may differ quite a lot from each other, while a cluster's individual elements may display a strong resemblence with one another - sometimes even more similar to one another than within a simple sample. The greater the difference between the clusters, while the similarity of their individual elements increases, the less exact is the clustersampling.
 
+**The analysis will contain the following steps:**
+
+1. The dataset "Boston" will be briefly introduced, by means of r-functions, as well as, graphical visualization.
+2. The dataset will be standardized, by means of scaling.
+3. A categorical variable - named "crime" will be created, with its aid train- and test-sets will be created.
+4. A linear discriminant analysis (LDA) will be attempted, and hopefully visualized by means of an LDA (bi)plot on the train set.
+5. Predictions based on the former LDA will be attempted.
+6. Finally, the Boston-dataset will be reloaded and standardized, the distances will be calculated, and the k-means algorithm will be applied to the dataset.
+
 ####Loading and exploring the data *Boston*:####
 
 
@@ -49,8 +58,24 @@ Here is a list of the variables and their respective meanings:
 
 *These definitions and further information can be looked up from [here](https://stat.ethz.ch/R-manual/R-devel/library/MASS/html/Boston.html).*
 
+
+The variable **crim** will be of particular importance in the next steps of this exercise.
+
+
 ####Graphical Overview of the dataset:####
 
+```{r graphical overview}
+
+#calculating the correlation-matrix & rounding
+cor_matrix <- cor(Boston) %>% round(digits = 2)
+
+#printing the correlation-matrix
+cor_matrix
+
+#visualization of the correlation-matrix
+corrplot(cor_matrix, method="circle", type="upper", cl.pos="b", tl.pos="d", tl.cex=0.6)
+
+```
 
 
 
@@ -74,7 +99,7 @@ boston_scaled <- as.data.frame(boston_scaled)
 In the following steps I intend to create a new categorical variable, named "crime", and use it to replace the original variable "crim".
 The quantiles are used as break points for this categorical variable. Finally the new dataset will be divided to train- and test-sets, so that 80% of the data belongs to the train set.
 
-```{r creating variable "crime"}
+```{r creating variable crime}
 
 #summary of scaled variable "crim"
 summary(boston_scaled$crim)
@@ -161,24 +186,40 @@ table(correct = correct_classes, predicted = lda.pred$class)
 
 ####Re-Loading "Boston" to apply k-means####
 
-```{r reloading "Boston"}
+```{r reloading Boston}
 
 #load the data
 data("Boston")
 
 ```
 
-```{r restandardizing "Boston"}
+```{r restandardizing Boston}
 
 #center and standardize "Boston"
-boston_scaled_2 <- scale(Boston)
+boston_scaled_2 <- as.data.frame(scale(Boston))
 
 
 #changing the object to a dataframe
-boston_scaled_2 <- as.data.frame(boston_scaled_2)
 
 ```
 
+##Calculating distances##
+
+```{r calculating distances between observations}
+
+#eucledian distance matrix
+dist_eu <- dist(Boston)
+
+#summarizing the euclidean distances
+summary(dist_eu)
+
+#manhattan distance matrix
+dist_man <- dist(Boston, method = "manhattan")
+
+#summarizing manhattan-distances
+summary(dist_man)
+
+```
 
 
 ```{r k-means of Boston}
