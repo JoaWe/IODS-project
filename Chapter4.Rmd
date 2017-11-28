@@ -15,7 +15,7 @@ A problem that persists by using *cluster samples*, however, is the so called *c
 ####Loading and exploring the data *Boston*:####
 
 
-```{r loading and exploring "Boston"}
+```{r loading and exploring Boston}
 
 
 #activating libraries
@@ -81,7 +81,7 @@ corrplot(cor_matrix, method="circle", type="upper", cl.pos="b", tl.pos="d", tl.c
 
 ####Scaling the dataset "Boston"####
 
-```{r standardizing "Boston"}
+```{r standardizing Boston}
 
 #center and standardize "Boston"
 boston_scaled <- scale(Boston)
@@ -195,11 +195,8 @@ data("Boston")
 
 ```{r restandardizing Boston}
 
-#center and standardize "Boston"
+#center and standardize "Boston" & changing the object to a dataframe
 boston_scaled_2 <- as.data.frame(scale(Boston))
-
-
-#changing the object to a dataframe
 
 ```
 
