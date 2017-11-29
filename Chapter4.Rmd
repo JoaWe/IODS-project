@@ -337,9 +337,8 @@ km <- kmeans(Boston, centers = 2)
 
 #plotting "Boston" with clusters
 pairs (Boston, col = km$cluster)
-points(km$center, col = 1:2, pch = 8, cex = 1)
 
 ```
 
-The two clusters that resulted from the analysis are represented in the plot by the colors red and black.
+The two clusters that resulted from the analysis are represented in the plot by the colors red and black. Supposedly, each datapoint (observation) of the dataset "Boston" has now been sorted into one of the two clusters. This sorting has been undertaken by reducing the randomly chosen initial cluster-amount of 10 down to 2 (or honestly, taken from the datacamp-exercise). Each observation should be sorted to the cluster, whose centroid is closest to it.
 
