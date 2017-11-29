@@ -88,7 +88,7 @@ corrplot(cor_matrix, method="pie", type="lower", cl.pos="b", tl.pos="d", tl.cex=
 ```
 
 The positive correlations are displayed in blue, while the negative correlations are displayed in red. The respective color-shade, as well as, the size of the "pie-piece" are displayed proportionally to the correlation-coefficients.
-*--> You can get information on how to change certain aspects of the corrplot, as well as, tricks with regard to their interpretation from [here](www.sthda.com/english/wiki/visualize-correlation-matrix-using-correlogram).*
+
 
 This implies that of particular interest are the negative correlations between
 **dis** with the variables **indus**, **nox**, and **age**. On the other hand, outstanding appears to be the positive correlation between **tax** and **rad**.
@@ -312,13 +312,13 @@ These attempts show that the distances between the supposed clusters vary strong
 K-means is a clustering algorithm that is commonly - though not exclusively - and supposedly easily used for the analyses of clusters. A problem is, however, that small changes in a dataset can result in significantly differing outcomes.
 The algorithm is used by
 
-1. choosing the number of clusters and picking the initial cluster-centroids (meaning "the central point of each cluster"), by means of the "total within the cluster sum of squares" (abbreviated with "twcss" in the code)
+1. choosing the number of clusters and picking the initial cluster-centroids (meaning "the central point of each cluster"), for example, by means of the "total within the cluster sum of squares" (abbreviated with "twcss" in the code)
 2.Calculating the distance between the centroids and the various datapoints ,
 3. all datapoints are then assigned to a cluster depending on which is centroid is the respectively closest.
 4. updating the centroids within each cluster, and if necessary calculating new centroids,
 5. updating the clusters, by re-calculating the distances between the datapoints and the priorly updated centroids.
 
-Steps 4. and 5. are undertaken until no further changes of centroids and clusters occur.
+Steps 4. and 5. are undertaken until no further changes of centroids and clusters occur. Accordingly, the k-means procedure is of an iterative nature.
 ```{r k-means of Boston}
 
 set.seed(123)
@@ -336,8 +336,10 @@ qplot(x = 1:k_max, y = twcss, geom = 'line')
 km <- kmeans(Boston, centers = 2)
 
 #plotting "Boston" with clusters
-pairs(Boston, col = km$cluster)
+pairs (Boston, col = km$cluster)
+points(km$center, col = 1:2, pch = 8, cex = 1)
 
 ```
 
+The two clusters that resulted from the analysis are represented in the plot by the colors red and black.
 
