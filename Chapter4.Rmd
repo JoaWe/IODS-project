@@ -115,7 +115,10 @@ summary(Boston$medv)
 
 ```
 
-###Scaling the dataset "Boston"###
+
+##Preparing the dataset##
+
+####Scaling the dataset "Boston"####
 
 To fit the LDA-model to the dataset two specific assumptions must be fulfilled:
 
@@ -135,7 +138,7 @@ summary(boston_scaled)
 ```
 
 
-###Creating Variable "crime"###
+####Creating Variable "crime"####
 
 In the following steps I intend to create a new categorical variable, named **crime**, and use it to replace the original variable **crim**.
 The quantiles are used as break points for this categorical variable. Finally, the new dataset will be divided to train- and test-sets, so that 80% of the data belongs to the train-set.
@@ -187,7 +190,7 @@ test <- dplyr::select(test, -crime)
 
 ```
 
-##The Linear discriminant Analysis (LDA)##
+##Classification-Instrument: The Linear discriminant Analysis (LDA)##
 
 LDA is used for three mainpurposes:
 
@@ -263,7 +266,9 @@ table(correct = correct_classes, predicted = lda.pred$class)
 
 ```
 
-##Re-Loading "Boston" to apply k-means##
+##Clustering-Instruments: Distance Measures and K-Means##
+
+####Re-Loading "Boston"####
 
 ```{r reloading Boston}
 
@@ -281,6 +286,9 @@ boston_scaled_2 <- as.data.frame(scale(Boston))
 
 ####Calculating distances####
 
+Distance measuring affects the results of cluster-analyses and is therefore particularly relevant for the the continuation of the analysis-process. Various approaches for measuring the distances are in use (e.g. euklidean distance, Manhattan or Taxicab distance, Jaccard-index, or the Hamming distance). Depending on the issues and dataset one can be more appropriate or promising for the analysis than another.
+As it was undertaken in the Datacamp-exercise, I will use the euclidean distance matrix (as it is generally the most common one) and the manhatten distance.
+
 ```{r calculating distances between observations}
 
 #eucledian distance matrix
@@ -297,6 +305,11 @@ summary(dist_man)
 
 ```
 
+These attempts show that the distances between the supposed clusters vary strongly according to the distance measure used.
+
+#### Applying k-means####
+
+K-means is a clustering algorithm that is commonly - though not exclusively - and supposedly easily used for the analyses of clusters. A problem is, however, that small changes in a dataset can result in significantly differing outcomes.
 
 ```{r k-means of Boston}
 
