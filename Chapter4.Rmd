@@ -310,7 +310,15 @@ These attempts show that the distances between the supposed clusters vary strong
 #### Applying k-means####
 
 K-means is a clustering algorithm that is commonly - though not exclusively - and supposedly easily used for the analyses of clusters. A problem is, however, that small changes in a dataset can result in significantly differing outcomes.
+The algorithm is used by
 
+1. choosing the number of clusters and picking the initial cluster-centroids (meaning "the central point of each cluster"), by means of the "total within the cluster sum of squares" (abbreviated with "twcss" in the code)
+2.Calculating the distance between the centroids and the various datapoints ,
+3. all datapoints are then assigned to a cluster depending on which is centroid is the respectively closest.
+4. updating the centroids within each cluster, and if necessary calculating new centroids,
+5. updating the clusters, by re-calculating the distances between the datapoints and the priorly updated centroids.
+
+Steps 4. and 5. are undertaken until no further changes of centroids and clusters occur.
 ```{r k-means of Boston}
 
 set.seed(123)
