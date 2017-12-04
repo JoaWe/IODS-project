@@ -27,6 +27,7 @@ library(ggplot2)
 install.packages("gmodels")
 install.packages("MASS")
 install.packages("corrplot")
+install.packages("stringr")
 # Data-wrangling attempts:
 
 # printing and summarizing "gender"
