@@ -14,3 +14,12 @@ library(dplyr)
 human <- read.csv("C:\\Users\\Ani\\Documents\\GitHub\\IODS-project\\data\\human.csv", header=TRUE)
 
 ```
+
+Here we take a quick look at the structure and dimensions of the dataset:
+```{r human structure & data}
+
+str(human)
+dim(human)
+rownames(human)
+
+```

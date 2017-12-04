@@ -6,6 +6,7 @@
 #Libraries:
 library(dplyr)
 library(ggplot2)
+library(stringr)
 
 #Reading Human development (hd) -data into R:
 hd <- read.csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_2218/datasets/human_development.csv", stringsAsFactors = F)
@@ -49,9 +50,6 @@ dim(human)
 write.csv(human, file = "C:\\Users\\Ani\\Documents\\GitHub\\IODS-project\\human.csv",row.names = FALSE)
 read.csv("C:\\Users\\Ani\\Documents\\GitHub\\IODS-project\\human.csv")
 
-#Accessing stringr-library:
-library(stringr)
-
 #Changing GNIpCap to numeric:
 str(human$GNIpCap)
 str_replace(human$GNIpCap, pattern = ",", replace = "") %>% as.numeric
@@ -72,28 +70,29 @@ complete.cases(human)
 data.frame(human[-1], comp = complete.cases(human))
 
 #filtering out all rows with NA-values
-human_ <- filter(human, complete.cases(human))
+human <- filter(human, complete.cases(human))
 
 #looking at observations for countries:
-human_$Country
+human$Country
 
 # using tail function to look at last 10 observations:
-tail(human_$Country, 10)
+tail(human$Country, 10)
 #Identified as Regions: World,Sub-Saharan Africa, South Asia, Latin America and the Caribbean, Europe and Central Asia, East Asia and the Pacific, and Arab States
 #These are to be removed from the new dataset!
 
 #creating object "last":
-last <- nrow(human_) - 7
+last <- nrow(human) - 7
 
 #Choosing everything until the "last"-data:
-human <- human_[1:last,]
+human <- human[1:last,]
 
 #Defining rownames:
 rownames(human) <- human$Country
+rownames(human)
 
 #removing column Country:
-human$Country <- NULL
+human <- select(human, -Country)
 #Well, seems like, I have now 155 observations and 8 variables...
 
 #saving the data in my data-folder:
-write.csv(human, file = "C:\\Users\\Ani\\Documents\\GitHub\\IODS-project\\data\\human.csv",row.names = TRUE)
+write.csv(human, file = "C:\\Users\\Ani\\Documents\\GitHub\\IODS-project\\data\\human.csv", row.names = FALSE)

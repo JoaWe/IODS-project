@@ -138,6 +138,35 @@ library(dplyr)</code></pre>
 ##     intersect, setdiff, setequal, union</code></pre>
 <pre class="r"><code>#loading human:
 human &lt;- read.csv(&quot;C:\\Users\\Ani\\Documents\\GitHub\\IODS-project\\data\\human.csv&quot;, header=TRUE)</code></pre>
+<p>Here we take a quick look at the structure and dimensions of the dataset:</p>
+<pre class="r"><code>str(human)</code></pre>
+<pre><code>## 'data.frame':    155 obs. of  8 variables:
+##  $ Life_Exp       : num  81.6 82.4 83 80.2 81.6 80.9 80.9 79.1 82 81.8 ...
+##  $ Exp_y_Edu      : num  17.5 20.2 15.8 18.7 17.9 16.5 18.6 16.5 15.9 19.2 ...
+##  $ GNIpCap        : Factor w/ 155 levels &quot;1,123&quot;,&quot;1,228&quot;,..: 132 109 124 112 113 111 103 123 108 93 ...
+##  $ MatMorRatio    : int  4 6 6 5 6 7 9 28 11 8 ...
+##  $ Adol_Birth_Rate: num  7.8 12.1 1.9 5.1 6.2 3.8 8.2 31 14.5 25.3 ...
+##  $ ParlRepPercent : num  39.6 30.5 28.5 38 36.9 36.9 19.9 19.4 28.2 31.4 ...
+##  $ Edu2.FM        : num  1.007 0.997 0.983 0.989 0.969 ...
+##  $ Lab.FM         : num  0.891 0.819 0.825 0.884 0.829 ...</code></pre>
+<pre class="r"><code>dim(human)</code></pre>
+<pre><code>## [1] 155   8</code></pre>
+<pre class="r"><code>rownames(human)</code></pre>
+<pre><code>##   [1] &quot;1&quot;   &quot;2&quot;   &quot;3&quot;   &quot;4&quot;   &quot;5&quot;   &quot;6&quot;   &quot;7&quot;   &quot;8&quot;   &quot;9&quot;   &quot;10&quot;  &quot;11&quot; 
+##  [12] &quot;12&quot;  &quot;13&quot;  &quot;14&quot;  &quot;15&quot;  &quot;16&quot;  &quot;17&quot;  &quot;18&quot;  &quot;19&quot;  &quot;20&quot;  &quot;21&quot;  &quot;22&quot; 
+##  [23] &quot;23&quot;  &quot;24&quot;  &quot;25&quot;  &quot;26&quot;  &quot;27&quot;  &quot;28&quot;  &quot;29&quot;  &quot;30&quot;  &quot;31&quot;  &quot;32&quot;  &quot;33&quot; 
+##  [34] &quot;34&quot;  &quot;35&quot;  &quot;36&quot;  &quot;37&quot;  &quot;38&quot;  &quot;39&quot;  &quot;40&quot;  &quot;41&quot;  &quot;42&quot;  &quot;43&quot;  &quot;44&quot; 
+##  [45] &quot;45&quot;  &quot;46&quot;  &quot;47&quot;  &quot;48&quot;  &quot;49&quot;  &quot;50&quot;  &quot;51&quot;  &quot;52&quot;  &quot;53&quot;  &quot;54&quot;  &quot;55&quot; 
+##  [56] &quot;56&quot;  &quot;57&quot;  &quot;58&quot;  &quot;59&quot;  &quot;60&quot;  &quot;61&quot;  &quot;62&quot;  &quot;63&quot;  &quot;64&quot;  &quot;65&quot;  &quot;66&quot; 
+##  [67] &quot;67&quot;  &quot;68&quot;  &quot;69&quot;  &quot;70&quot;  &quot;71&quot;  &quot;72&quot;  &quot;73&quot;  &quot;74&quot;  &quot;75&quot;  &quot;76&quot;  &quot;77&quot; 
+##  [78] &quot;78&quot;  &quot;79&quot;  &quot;80&quot;  &quot;81&quot;  &quot;82&quot;  &quot;83&quot;  &quot;84&quot;  &quot;85&quot;  &quot;86&quot;  &quot;87&quot;  &quot;88&quot; 
+##  [89] &quot;89&quot;  &quot;90&quot;  &quot;91&quot;  &quot;92&quot;  &quot;93&quot;  &quot;94&quot;  &quot;95&quot;  &quot;96&quot;  &quot;97&quot;  &quot;98&quot;  &quot;99&quot; 
+## [100] &quot;100&quot; &quot;101&quot; &quot;102&quot; &quot;103&quot; &quot;104&quot; &quot;105&quot; &quot;106&quot; &quot;107&quot; &quot;108&quot; &quot;109&quot; &quot;110&quot;
+## [111] &quot;111&quot; &quot;112&quot; &quot;113&quot; &quot;114&quot; &quot;115&quot; &quot;116&quot; &quot;117&quot; &quot;118&quot; &quot;119&quot; &quot;120&quot; &quot;121&quot;
+## [122] &quot;122&quot; &quot;123&quot; &quot;124&quot; &quot;125&quot; &quot;126&quot; &quot;127&quot; &quot;128&quot; &quot;129&quot; &quot;130&quot; &quot;131&quot; &quot;132&quot;
+## [133] &quot;133&quot; &quot;134&quot; &quot;135&quot; &quot;136&quot; &quot;137&quot; &quot;138&quot; &quot;139&quot; &quot;140&quot; &quot;141&quot; &quot;142&quot; &quot;143&quot;
+## [144] &quot;144&quot; &quot;145&quot; &quot;146&quot; &quot;147&quot; &quot;148&quot; &quot;149&quot; &quot;150&quot; &quot;151&quot; &quot;152&quot; &quot;153&quot; &quot;154&quot;
+## [155] &quot;155&quot;</code></pre>
 </div>
 
 
