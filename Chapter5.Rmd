@@ -1,1 +1,16 @@
 #**Dimensionality and Reduction Techniques**#
+
+Accessing libraries and loading the dataset "human":
+```{r libraries and loading human-dataset}
+
+
+#activating libraries:
+library(tidyr)
+library(corrplot)
+library(ggplot2)
+library(dplyr)
+
+#loading human:
+human <- read.csv("C:\\Users\\Ani\\Documents\\GitHub\\IODS-project\\data\\human.csv", header=TRUE)
+
+```
