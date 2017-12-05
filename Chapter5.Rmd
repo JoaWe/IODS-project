@@ -1,5 +1,25 @@
 #**Dimensionality and Reduction Techniques**#
 
+For this exercise I use the newly created dataset *human*, which is based on the two datasets *hd* and *gii* from the *Human Development Index*. The original datasets consisted of 195 observations each, the hd-dataset originally included 7 observations, while the gii-dataset included 10 variables.
+
+Four variables of the dataset were reduced to the number of two by combining the separate variables  Edu2.F and  Edu2.M to Edu2.FM and the separate variables to Lab.FM.
+
+In order to create the dataset *human* the two sets have been joined by the variable *country*. The final seven observations have been removed, as they referred to the regions World, Sub-Saharan Africa, South Asia, Latin America and the Caribbean, Europe and Central Asia, East Asia and the Pacific, and Arab States, and as such not to specific countries. 
+
+As can be seen below the dataset *human* now consists of the following variables:
+
+- **Life_Exp** refers to average life-expectency in the number of years from the date of birth
+- **Exp_y_Edu** refers to the expected number of educational years
+- **GNIpCap** refers to the Gross national income (GNI) per
+capita
+- **MatMorRatio** refers to the Maternal mortality ratio	  
+- **Adol_Birth_Rate** refers to the Adolescent birth rate	
+- **ParlRepPercent** refers to the women's share of seats in parliament
+- **Edu2.FM** refers to the population with at least some secondary education for both males and females of the age of at least 25)
+- **Lab.FM** refers to the Labour force
+participation rate (for both males and females of the age of 15 or older)
+
+
 Accessing libraries and loading the dataset "human":
 ```{r libraries and loading human-dataset}
 
@@ -9,6 +29,7 @@ library(tidyr)
 library(corrplot)
 library(ggplot2)
 library(dplyr)
+library(GGally)
 
 #loading human:
 human <- read.csv("C:\\Users\\Ani\\Documents\\GitHub\\IODS-project\\data\\human.csv", header=TRUE)
@@ -20,6 +41,18 @@ Here we take a quick look at the structure and dimensions of the dataset:
 
 str(human)
 dim(human)
-rownames(human)
+colnames(human)
+
+```
+
+####Graphical Overview of the dataset:####
+
+```{r graphical overview human}
+
+#visualizing variables "human"
+ggpairs(human)
+
+#computing the correlationmatrix and visualizing it with corrplot
+cor(human) %>% corrplot
 
 ```

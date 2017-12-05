@@ -2,6 +2,7 @@
 # 04.12.2017
 #Datawrangling Rstudio- tasks 4 & 5
 
+#The orignial datasets contain 7 variables and 195 observations (Human development Index) and 10 variables with the same number of Observations. 
 
 #Libraries:
 library(dplyr)
@@ -95,4 +96,4 @@ human <- select(human, -Country)
 #Well, seems like, I have now 155 observations and 8 variables...
 
 #saving the data in my data-folder:
-write.csv(human, file = "C:\\Users\\Ani\\Documents\\GitHub\\IODS-project\\data\\human.csv", row.names = FALSE)
+write.csv(human, file = "C:\\Users\\Ani\\Documents\\GitHub\\IODS-project\\data\\human.csv", row.names = TRUE)
