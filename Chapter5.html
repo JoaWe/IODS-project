@@ -152,12 +152,17 @@ library(dplyr)</code></pre>
 <pre><code>## The following objects are masked from 'package:base':
 ## 
 ##     intersect, setdiff, setequal, union</code></pre>
+<pre class="r"><code>library(GGally)</code></pre>
+<pre><code>## 
+## Attaching package: 'GGally'</code></pre>
+<pre><code>## The following object is masked from 'package:dplyr':
+## 
+##     nasa</code></pre>
 <pre class="r"><code>#loading human:
-human &lt;- read.csv(&quot;C:\\Users\\Ani\\Documents\\GitHub\\IODS-project\\data\\human.csv&quot;, header=TRUE)</code></pre>
+human &lt;- read.csv(&quot;C:\\Users\\Ani\\Documents\\GitHub\\IODS-project\\data\\human.csv&quot;, header=TRUE, row.names = 1)</code></pre>
 <p>Here we take a quick look at the structure and dimensions of the dataset:</p>
 <pre class="r"><code>str(human)</code></pre>
-<pre><code>## 'data.frame':    155 obs. of  9 variables:
-##  $ X              : Factor w/ 155 levels &quot;Afghanistan&quot;,..: 105 6 134 41 101 54 67 149 28 102 ...
+<pre><code>## 'data.frame':    155 obs. of  8 variables:
 ##  $ Life_Exp       : num  81.6 82.4 83 80.2 81.6 80.9 80.9 79.1 82 81.8 ...
 ##  $ Exp_y_Edu      : num  17.5 20.2 15.8 18.7 17.9 16.5 18.6 16.5 15.9 19.2 ...
 ##  $ GNIpCap        : Factor w/ 155 levels &quot;1,123&quot;,&quot;1,228&quot;,..: 132 109 124 112 113 111 103 123 108 93 ...
@@ -167,11 +172,163 @@ human &lt;- read.csv(&quot;C:\\Users\\Ani\\Documents\\GitHub\\IODS-project\\data
 ##  $ Edu2.FM        : num  1.007 0.997 0.983 0.989 0.969 ...
 ##  $ Lab.FM         : num  0.891 0.819 0.825 0.884 0.829 ...</code></pre>
 <pre class="r"><code>dim(human)</code></pre>
-<pre><code>## [1] 155   9</code></pre>
-<pre class="r"><code>colnames(human)</code></pre>
-<pre><code>## [1] &quot;X&quot;               &quot;Life_Exp&quot;        &quot;Exp_y_Edu&quot;       &quot;GNIpCap&quot;        
-## [5] &quot;MatMorRatio&quot;     &quot;Adol_Birth_Rate&quot; &quot;ParlRepPercent&quot;  &quot;Edu2.FM&quot;        
-## [9] &quot;Lab.FM&quot;</code></pre>
+<pre><code>## [1] 155   8</code></pre>
+<pre class="r"><code>rownames(human)</code></pre>
+<pre><code>##   [1] &quot;Norway&quot;                                   
+##   [2] &quot;Australia&quot;                                
+##   [3] &quot;Switzerland&quot;                              
+##   [4] &quot;Denmark&quot;                                  
+##   [5] &quot;Netherlands&quot;                              
+##   [6] &quot;Germany&quot;                                  
+##   [7] &quot;Ireland&quot;                                  
+##   [8] &quot;United States&quot;                            
+##   [9] &quot;Canada&quot;                                   
+##  [10] &quot;New Zealand&quot;                              
+##  [11] &quot;Singapore&quot;                                
+##  [12] &quot;Sweden&quot;                                   
+##  [13] &quot;United Kingdom&quot;                           
+##  [14] &quot;Iceland&quot;                                  
+##  [15] &quot;Korea (Republic of)&quot;                      
+##  [16] &quot;Israel&quot;                                   
+##  [17] &quot;Luxembourg&quot;                               
+##  [18] &quot;Japan&quot;                                    
+##  [19] &quot;Belgium&quot;                                  
+##  [20] &quot;France&quot;                                   
+##  [21] &quot;Austria&quot;                                  
+##  [22] &quot;Finland&quot;                                  
+##  [23] &quot;Slovenia&quot;                                 
+##  [24] &quot;Spain&quot;                                    
+##  [25] &quot;Italy&quot;                                    
+##  [26] &quot;Czech Republic&quot;                           
+##  [27] &quot;Greece&quot;                                   
+##  [28] &quot;Estonia&quot;                                  
+##  [29] &quot;Cyprus&quot;                                   
+##  [30] &quot;Qatar&quot;                                    
+##  [31] &quot;Slovakia&quot;                                 
+##  [32] &quot;Poland&quot;                                   
+##  [33] &quot;Lithuania&quot;                                
+##  [34] &quot;Malta&quot;                                    
+##  [35] &quot;Saudi Arabia&quot;                             
+##  [36] &quot;Argentina&quot;                                
+##  [37] &quot;United Arab Emirates&quot;                     
+##  [38] &quot;Chile&quot;                                    
+##  [39] &quot;Portugal&quot;                                 
+##  [40] &quot;Hungary&quot;                                  
+##  [41] &quot;Bahrain&quot;                                  
+##  [42] &quot;Latvia&quot;                                   
+##  [43] &quot;Croatia&quot;                                  
+##  [44] &quot;Kuwait&quot;                                   
+##  [45] &quot;Montenegro&quot;                               
+##  [46] &quot;Belarus&quot;                                  
+##  [47] &quot;Russian Federation&quot;                       
+##  [48] &quot;Oman&quot;                                     
+##  [49] &quot;Romania&quot;                                  
+##  [50] &quot;Uruguay&quot;                                  
+##  [51] &quot;Bahamas&quot;                                  
+##  [52] &quot;Kazakhstan&quot;                               
+##  [53] &quot;Barbados&quot;                                 
+##  [54] &quot;Bulgaria&quot;                                 
+##  [55] &quot;Panama&quot;                                   
+##  [56] &quot;Malaysia&quot;                                 
+##  [57] &quot;Mauritius&quot;                                
+##  [58] &quot;Trinidad and Tobago&quot;                      
+##  [59] &quot;Serbia&quot;                                   
+##  [60] &quot;Cuba&quot;                                     
+##  [61] &quot;Lebanon&quot;                                  
+##  [62] &quot;Costa Rica&quot;                               
+##  [63] &quot;Iran (Islamic Republic of)&quot;               
+##  [64] &quot;Venezuela (Bolivarian Republic of)&quot;       
+##  [65] &quot;Turkey&quot;                                   
+##  [66] &quot;Sri Lanka&quot;                                
+##  [67] &quot;Mexico&quot;                                   
+##  [68] &quot;Brazil&quot;                                   
+##  [69] &quot;Georgia&quot;                                  
+##  [70] &quot;Azerbaijan&quot;                               
+##  [71] &quot;Jordan&quot;                                   
+##  [72] &quot;The former Yugoslav Republic of Macedonia&quot;
+##  [73] &quot;Ukraine&quot;                                  
+##  [74] &quot;Algeria&quot;                                  
+##  [75] &quot;Peru&quot;                                     
+##  [76] &quot;Albania&quot;                                  
+##  [77] &quot;Armenia&quot;                                  
+##  [78] &quot;Bosnia and Herzegovina&quot;                   
+##  [79] &quot;Ecuador&quot;                                  
+##  [80] &quot;China&quot;                                    
+##  [81] &quot;Fiji&quot;                                     
+##  [82] &quot;Mongolia&quot;                                 
+##  [83] &quot;Thailand&quot;                                 
+##  [84] &quot;Libya&quot;                                    
+##  [85] &quot;Tunisia&quot;                                  
+##  [86] &quot;Colombia&quot;                                 
+##  [87] &quot;Jamaica&quot;                                  
+##  [88] &quot;Tonga&quot;                                    
+##  [89] &quot;Belize&quot;                                   
+##  [90] &quot;Dominican Republic&quot;                       
+##  [91] &quot;Suriname&quot;                                 
+##  [92] &quot;Maldives&quot;                                 
+##  [93] &quot;Samoa&quot;                                    
+##  [94] &quot;Botswana&quot;                                 
+##  [95] &quot;Moldova (Republic of)&quot;                    
+##  [96] &quot;Egypt&quot;                                    
+##  [97] &quot;Gabon&quot;                                    
+##  [98] &quot;Indonesia&quot;                                
+##  [99] &quot;Paraguay&quot;                                 
+## [100] &quot;Philippines&quot;                              
+## [101] &quot;El Salvador&quot;                              
+## [102] &quot;South Africa&quot;                             
+## [103] &quot;Viet Nam&quot;                                 
+## [104] &quot;Bolivia (Plurinational State of)&quot;         
+## [105] &quot;Kyrgyzstan&quot;                               
+## [106] &quot;Iraq&quot;                                     
+## [107] &quot;Guyana&quot;                                   
+## [108] &quot;Nicaragua&quot;                                
+## [109] &quot;Morocco&quot;                                  
+## [110] &quot;Namibia&quot;                                  
+## [111] &quot;Guatemala&quot;                                
+## [112] &quot;Tajikistan&quot;                               
+## [113] &quot;India&quot;                                    
+## [114] &quot;Honduras&quot;                                 
+## [115] &quot;Bhutan&quot;                                   
+## [116] &quot;Syrian Arab Republic&quot;                     
+## [117] &quot;Congo&quot;                                    
+## [118] &quot;Zambia&quot;                                   
+## [119] &quot;Ghana&quot;                                    
+## [120] &quot;Bangladesh&quot;                               
+## [121] &quot;Cambodia&quot;                                 
+## [122] &quot;Kenya&quot;                                    
+## [123] &quot;Nepal&quot;                                    
+## [124] &quot;Pakistan&quot;                                 
+## [125] &quot;Myanmar&quot;                                  
+## [126] &quot;Swaziland&quot;                                
+## [127] &quot;Tanzania (United Republic of)&quot;            
+## [128] &quot;Cameroon&quot;                                 
+## [129] &quot;Zimbabwe&quot;                                 
+## [130] &quot;Mauritania&quot;                               
+## [131] &quot;Papua New Guinea&quot;                         
+## [132] &quot;Yemen&quot;                                    
+## [133] &quot;Lesotho&quot;                                  
+## [134] &quot;Togo&quot;                                     
+## [135] &quot;Haiti&quot;                                    
+## [136] &quot;Rwanda&quot;                                   
+## [137] &quot;Uganda&quot;                                   
+## [138] &quot;Benin&quot;                                    
+## [139] &quot;Sudan&quot;                                    
+## [140] &quot;Senegal&quot;                                  
+## [141] &quot;Afghanistan&quot;                              
+## [142] &quot;CÃ´te d'Ivoire&quot;                           
+## [143] &quot;Malawi&quot;                                   
+## [144] &quot;Ethiopia&quot;                                 
+## [145] &quot;Gambia&quot;                                   
+## [146] &quot;Congo (Democratic Republic of the)&quot;       
+## [147] &quot;Liberia&quot;                                  
+## [148] &quot;Mali&quot;                                     
+## [149] &quot;Mozambique&quot;                               
+## [150] &quot;Sierra Leone&quot;                             
+## [151] &quot;Burkina Faso&quot;                             
+## [152] &quot;Burundi&quot;                                  
+## [153] &quot;Chad&quot;                                     
+## [154] &quot;Central African Republic&quot;                 
+## [155] &quot;Niger&quot;</code></pre>
 </div>
 
 

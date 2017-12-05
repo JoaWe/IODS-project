@@ -6,7 +6,7 @@ Four variables of the dataset were reduced to the number of two by combining the
 
 In order to create the dataset *human* the two sets have been joined by the variable *country*. The final seven observations have been removed, as they referred to the regions World, Sub-Saharan Africa, South Asia, Latin America and the Caribbean, Europe and Central Asia, East Asia and the Pacific, and Arab States, and as such not to specific countries. 
 
-As can be seen below the dataset *human* now consists of the following variables:
+As can be seen below the dataset *human* now consists of the following 8 variables:
 
 - **Life_Exp** refers to average life-expectency in the number of years from the date of birth
 - **Exp_y_Edu** refers to the expected number of educational years
@@ -19,6 +19,7 @@ capita
 - **Lab.FM** refers to the Labour force
 participation rate (for both males and females of the age of 15 or older)
 
+And the dataset itself now consists of 155 observations.
 
 Accessing libraries and loading the dataset "human":
 ```{r libraries and loading human-dataset}
@@ -32,7 +33,7 @@ library(dplyr)
 library(GGally)
 
 #loading human:
-human <- read.csv("C:\\Users\\Ani\\Documents\\GitHub\\IODS-project\\data\\human.csv", header=TRUE)
+human <- read.csv("C:\\Users\\Ani\\Documents\\GitHub\\IODS-project\\data\\human.csv", header=TRUE, row.names = 1)
 
 ```
 
@@ -41,18 +42,14 @@ Here we take a quick look at the structure and dimensions of the dataset:
 
 str(human)
 dim(human)
-colnames(human)
+rownames(human)
 
 ```
 
-####Graphical Overview of the dataset:####
+Let's take a briefly visualize the dataset "human":
+```{r human visualizationa}
 
-```{r graphical overview human}
-
-#visualizing variables "human"
 ggpairs(human)
-
-#computing the correlationmatrix and visualizing it with corrplot
-cor(human) %>% corrplot
+cor(human)%>%corrplot
 
 ```
