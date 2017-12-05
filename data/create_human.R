@@ -71,13 +71,13 @@ complete.cases(human)
 data.frame(human[-1], comp = complete.cases(human))
 
 #filtering out all rows with NA-values
-human <- filter(human, complete.cases(human))
+human_ <- filter(human, complete.cases(human))
 
 #looking at observations for countries:
 human$Country
 
 # using tail function to look at last 10 observations:
-tail(human$Country, 10)
+tail(human, 10)
 #Identified as Regions: World,Sub-Saharan Africa, South Asia, Latin America and the Caribbean, Europe and Central Asia, East Asia and the Pacific, and Arab States
 #These are to be removed from the new dataset!
 
@@ -85,7 +85,8 @@ tail(human$Country, 10)
 last <- nrow(human) - 7
 
 #Choosing everything until the "last"-data:
-human <- human[1:last,]
+human_ <- human[1:last,]
+human <- filter(human_, complete.cases(human_))
 
 #Defining rownames:
 rownames(human) <- human$Country

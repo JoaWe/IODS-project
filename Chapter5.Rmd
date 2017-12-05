@@ -30,7 +30,6 @@ library(tidyr)
 library(corrplot)
 library(ggplot2)
 library(dplyr)
-library(GGally)
 
 #loading human:
 human <- read.csv("C:\\Users\\Ani\\Documents\\GitHub\\IODS-project\\data\\human.csv", header=TRUE, row.names = 1)
@@ -46,10 +45,13 @@ rownames(human)
 
 ```
 
-Let's take a briefly visualize the dataset "human":
-```{r human visualizationa}
+Let's take a brief look at the dataset "human":
+```{r human visualization}
 
+library(GGally)
+human_ <- select(human, -Country)
 ggpairs(human)
 cor(human)%>%corrplot
 
 ```
+
