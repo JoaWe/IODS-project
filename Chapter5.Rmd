@@ -59,14 +59,29 @@ summary(human$Lab.FM)
 ```
 
 As I had some trouble that I could not solve in my attempts I have **excluded the variable "GNIpCap" from being visualized in the following graph**. 
-I am aware that it was not part of the task, but even after asking for help in the course-session, I could not get this to work without RStudio giving me a warning about the "cardinality threshold". 
+I am aware that it was not part of the task, but even after asking for help in the course-session, I could not get this to work. Thus I had 2 options at this point: 1. including this variable, and changing the "cardinality threshold" to NULL, which would have resulted in unreadable graphs, or 2. excluding the variable GNIpCap from being displayed at all, but at least being able to see the other correlations.
+
+*I assume, that the problem is to be found in my coding [here](https://github.com/JoaWe/IODS-project/blob/master/data/create_human.R) row 54-58. But I have been unable to determine what it is.*
 
 ```{r graphical visualization}
 
 library(GGally)
 human <- select(human, -GNIpCap)
-ggpairs(human, cardinality_threshold = NULL)
+ggpairs(human, method="pie", type="lower" )
 cor(human)%>%corrplot
 
 ```
 
+As the graph above shows, there seems to be a very high negative correlation between the Maternal Mortality Ratio (= MatMorRatio) and the general Life-Expectancy (= Life_Exp). Not quite as significant as the former, but certainly noticeable are the strong negative correlations between, firstly, the Maternal Mortality Ratio and the expected number of educational years (= Exp_y_Edu), secondly, the Life Expectancy and the adolescent birthrate (Adol_Birth_Rate), and finally, the negative correlation between the adolescent birthrate and the expected number of educational years.
+
+At this point, the srong positive correlation between the adolsecent birthrate and the Maternal Mortality Ratio appear of little surprise. Equally strong, it seems is the positive correlation between the life expectency and the expected number of educational years.
+
+###Attempting PCA###
+
+1. Standardizing the dataset:
+
+```{r scaling human}
+
+human_std <- scale(human)
+
+```
