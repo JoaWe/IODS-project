@@ -36,21 +36,36 @@ human <- read.csv("C:\\Users\\Ani\\Documents\\GitHub\\IODS-project\\data\\human.
 
 ```
 
-Here we take a quick look at the structure and dimensions of the dataset:
+Here we take a quick look at the structure and dimensions of the dataset, which are sorted by the name of the country:
 ```{r human structure & data}
 
 str(human)
 dim(human)
-rownames(human)
 
 ```
 
-Let's take a brief look at the dataset "human":
-```{r human visualization}
+Let's take a brief look at the individual variables of the dataset "human":
+
+```{r human variable summaries}
+
+summary(human$Life_Exp)
+summary(human$Exp_y_Edu)
+summary(human$GNIpCap)
+summary(human$MatMorRatio)
+summary(human$Adol_Birth_Rate)
+summary(human$ParlRepPercent)
+summary(human$Edu2.FM)
+summary(human$Lab.FM)
+```
+
+As I had some trouble that I could not solve in my attempts I have **excluded the variable "GNIpCap" from being visualized in the following graph**. 
+I am aware that it was not part of the task, but even after asking for help in the course-session, I could not get this to work without RStudio giving me a warning about the "cardinality threshold". 
+
+```{r graphical visualization}
 
 library(GGally)
-human_ <- select(human, -Country)
-ggpairs(human)
+human <- select(human, -GNIpCap)
+ggpairs(human, cardinality_threshold = NULL)
 cor(human)%>%corrplot
 
 ```

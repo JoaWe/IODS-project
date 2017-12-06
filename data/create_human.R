@@ -7,7 +7,7 @@
 #Libraries:
 library(dplyr)
 library(ggplot2)
-library(stringr)
+
 
 #Reading Human development (hd) -data into R:
 hd <- read.csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_2218/datasets/human_development.csv", stringsAsFactors = F)
@@ -52,8 +52,10 @@ write.csv(human, file = "C:\\Users\\Ani\\Documents\\GitHub\\IODS-project\\human.
 read.csv("C:\\Users\\Ani\\Documents\\GitHub\\IODS-project\\human.csv")
 
 #Changing GNIpCap to numeric:
+library(stringr)
 str(human$GNIpCap)
 str_replace(human$GNIpCap, pattern = ",", replace = "") %>% as.numeric
+str(human$GNIpCap)
 
 #keeping 9 columns: Country, Life_Exp, Exp_y_Edu, GNIpCap MatMorRatio, Adol_Birth_Rate, ParlRepPercent, Edu2.FM, and Lab.FM:
 keep <- c("Country", "Life_Exp", "Exp_y_Edu", "GNIpCap", "MatMorRatio", "Adol_Birth_Rate", "ParlRepPercent", "Edu2.FM", "Lab.FM")
@@ -70,9 +72,6 @@ complete.cases(human)
 #printing the data with completteness-indicator as last column:
 data.frame(human[-1], comp = complete.cases(human))
 
-#filtering out all rows with NA-values
-human_ <- filter(human, complete.cases(human))
-
 #looking at observations for countries:
 human$Country
 
@@ -86,6 +85,9 @@ last <- nrow(human) - 7
 
 #Choosing everything until the "last"-data:
 human_ <- human[1:last,]
+
+
+#filtering out all rows with NA-values:
 human <- filter(human_, complete.cases(human_))
 
 #Defining rownames:
