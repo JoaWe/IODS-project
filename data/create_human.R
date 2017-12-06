@@ -61,7 +61,7 @@ str(human$GNIpCap)
 keep <- c("Country", "Life_Exp", "Exp_y_Edu", "GNIpCap", "MatMorRatio", "Adol_Birth_Rate", "ParlRepPercent", "Edu2.FM", "Lab.FM")
 
 #selecting keep-columns:
-human <- select(human, one_of(keep))
+human <- dplyr::select(human, one_of(keep))
 
 #dimensions-check to make sure, I have the 9 columns:
 dim(human)
@@ -95,7 +95,7 @@ rownames(human) <- human$Country
 rownames(human)
 
 #removing column Country:
-human <- select(human, -Country)
+human <- dplyr::select(human, -Country)
 #Well, seems like, I have now 155 observations and 8 variables...
 
 #saving the data in my data-folder:

@@ -30,6 +30,7 @@ library(tidyr)
 library(corrplot)
 library(ggplot2)
 library(dplyr)
+library(GGally)
 
 #loading human:
 human <- read.csv("C:\\Users\\Ani\\Documents\\GitHub\\IODS-project\\data\\human.csv", header=TRUE, row.names = 1)
@@ -65,9 +66,8 @@ I am aware that it was not part of the task, but even after asking for help in t
 
 ```{r graphical visualization}
 
-library(GGally)
 human <- select(human, -GNIpCap)
-ggpairs(human, method="pie", type="lower" )
+ggpairs(human)
 cor(human)%>%corrplot
 
 ```
