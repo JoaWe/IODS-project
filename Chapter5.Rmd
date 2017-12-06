@@ -62,7 +62,7 @@ summary(human$Lab.FM)
 As I had some trouble that I could not solve in my attempts I have **excluded the variable "GNIpCap" from being visualized in the following graph**. 
 I am aware that it was not part of the task, but even after asking for help in the course-session, I could not get this to work. Thus I had 2 options at this point: 1. including this variable, and changing the "cardinality threshold" to NULL, which would have resulted in unreadable graphs, or 2. excluding the variable GNIpCap from being displayed at all, but at least being able to see the other correlations.
 
-*I assume, that the problem is to be found in my coding [here](https://github.com/JoaWe/IODS-project/blob/master/data/create_human.R) row 54-58. But I have been unable to determine what it is.*
+*I assume, that the problem is to be found in my coding [here](https://github.com/JoaWe/IODS-project/blob/master/data/create_human.R) row 54-58. But I have been unable to determine what it is. As you might have noticed in the str() of my dataset the variable still contains characters, although they were supposed to have been changed to numerics. But as I have followed the instructions from the datacamp-exercise, I don't know why it would not work.*
 
 ```{r graphical visualization}
 
